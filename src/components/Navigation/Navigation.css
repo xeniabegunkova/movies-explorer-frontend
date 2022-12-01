@@ -1,0 +1,34 @@
+.navigation {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.navigation__name {
+    margin: 0;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    margin-top: 29px;
+    margin-bottom: 29px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.navigation__name:last-child {
+    color: white;
+    margin-top: 21px;
+    margin-bottom: 21px;
+}
+
+.navigation__name_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 76px;
+    height: 32px;
+    background-color: #000;
+    border-radius: 3px;
+    margin-left: 30px;
+}
