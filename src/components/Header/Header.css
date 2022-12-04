@@ -2,6 +2,12 @@
     margin: 0;
     display: flex;
     justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.header__pink {
+    background-color: #F3C1F8;
 }
 
 .header__logo {

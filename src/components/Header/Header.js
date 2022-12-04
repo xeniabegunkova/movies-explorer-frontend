@@ -3,16 +3,15 @@ import Navigation from "../Navigation/Navigation";
 import './Header.css'; 
 import logo from '../../images/logo.svg';
 
-function Header(loggedIn) {
-    
+function Header(props) {
     return (
-        <header className="header">
+        <header className={ "header " + (props.loggedIn ? 'header__pink' : '')}>
             <img
                 src={logo}
                 alt="Logo of diploma"
                 className="header__logo"
             />
-            <Navigation loggedIn={loggedIn}/>
+            <Navigation loggedIn={props.loggedIn}/>
         </header>
     )
 }

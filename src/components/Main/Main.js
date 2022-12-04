@@ -1,11 +1,13 @@
-import Header from "../Header/Header";
+import AboutProject from "./AboutProject/AboutProject";
 import Promo from "./Promo/Promo";
+import Techs from "./Techs/Techs";
 
-function Main(loggedIn) {
+function Main() {
     return (
         <>
-            <Header loggedIn={loggedIn} />
             <Promo />
+            <AboutProject />
+            <Techs />
         </>
     );
 }

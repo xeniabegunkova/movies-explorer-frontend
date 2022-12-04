@@ -1,0 +1,87 @@
+.about {
+    margin: 0;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.about__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    text-align: start;
+    margin-top: 100px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #000;
+}
+
+.about__information {
+    padding-top: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+}
+
+.about__info_name {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    text-align: left;
+}
+
+.about__info_text {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 26px;
+    padding-bottom: 110px;
+    text-align: left;
+}
+
+.about__timing {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.about__timing_first {
+    margin: 0;
+    background-color: #000;
+    color: white;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about__timing_fourth {
+    margin: 0;
+    background: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.about__timing_description {
+    margin: 0;
+    padding-top: 14px;
+    padding-bottom: 155px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #A0A0A0;
+}
