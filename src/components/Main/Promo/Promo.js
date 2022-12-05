@@ -20,9 +20,13 @@ function Promo() {
                     </p>
                 </div>
             </div>
-            <button className='promo__button' type='button'>Узнать больше</button>
+            <nav>
+            <a className='promo__link' href='#aboutProject'>Узнать больше</a>
+            </nav>
         </section>
     )
 }
 
 export default Promo;
+
+//https://htmlacademy.ru/courses/305/run/5
