@@ -36,3 +36,17 @@
 .navigation__name:hover {
     opacity: 0.6;
 }
+
+@media screen and (max-width: 320px) {
+    .navigation__name:last-child {
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+
+    .navigation__name_button {
+        width: 54px;
+        height: 26px;
+        margin-left: 14px;
+    }
+    
+}

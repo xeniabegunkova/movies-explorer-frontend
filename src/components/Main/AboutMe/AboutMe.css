@@ -1,0 +1,155 @@
+.aboutMe {
+    margin: 0;
+    padding: 0 70px 101px;
+}
+
+.aboutMe__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    text-align: start;
+    margin-top: 100px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #000;
+}
+
+.aboutMe__profile {
+    margin: 0;
+    padding-top: 66px;
+    display: grid;
+    grid-template-columns: 600px 270px;
+    grid-column-gap: 260px;
+}
+
+.aboutMe__info {
+    margin: 0;
+    text-align: initial;
+}
+
+.aboutMe__name {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+}
+
+.aboutMe__information {
+    margin: 0;
+    padding-top: 18px;
+    padding-bottom: 26px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    mix-blend-mode: normal;
+}
+
+.aboutMe__description {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    mix-blend-mode: normal;
+    padding-bottom: 99px;
+}
+
+.aboutMe__link {
+    margin: 0;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.aboutMe__img {
+    margin: 0;
+    max-width: 270px;
+    min-height: 327px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutMe {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+
+    .aboutMe__profile {
+        margin: 0;
+        padding-top: 66px;
+        display: grid;
+        grid-template-columns: 364px 255px;
+        grid-column-gap: 49px;
+    }
+
+    .aboutMe__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .aboutMe__information {
+        padding-top: 16px;
+        padding-bottom: 20px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutMe__description {
+        font-size: 12px;
+        line-height: 18px;
+        padding-bottom: 87px;
+    }
+}
+
+    @media screen and (max-width: 320px) {
+        .aboutMe {
+            padding: 70px 10px;
+            width: 292px;
+        }
+
+        .aboutMe__title {
+            font-size: 18px;
+            line-height: 22px;
+            margin-top: 0;
+            padding-bottom: 28px;
+        }
+
+        .aboutMe__profile {
+            margin: 0;
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .aboutMe__name {
+            font-size: 30px;
+            line-height: 36px;
+        }
+
+        .aboutMe__img {
+            max-width: 292px;
+            min-height: 352px;
+        }
+
+        .aboutMe__information {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            font-size: 11px;
+            line-height: 16px;
+        }
+
+        .aboutMe__description {
+            font-size: 11px;
+            line-height: 16px;
+            padding-bottom: 40px;
+        }
+    }
