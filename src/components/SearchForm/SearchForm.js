@@ -19,11 +19,10 @@ function SearchForm() {
                     Короткометражки
                 </span>
             </div>
-
         </section >
     )
 }
 
 export default SearchForm;
 
-////http://codeharmony.ru/materials/42
+////http://codeharmony.ru/materials/42 - инфа о кнопке, как в айфоне
