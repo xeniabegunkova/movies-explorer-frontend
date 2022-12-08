@@ -1,17 +1,12 @@
-import { NavLink } from 'react-router-dom';
-import './Navigation.css'; 
+import NavigationFilms from "./NavigationFilms/NavigationFilms";
+import NavigationMain from "./NavigationMain/NavigationMain";
 
-function Navigation() {
+function Navigation(props) {
     return (
-        <nav className='navigation'>
-            <NavLink to="/signup" className='navigation__name'>
-                Регистрация
-            </NavLink>
-            <NavLink to="/signin" className='navigation__name navigation__name_button'>
-                Войти
-            </NavLink>
-        </nav>
-    );
+        <>
+            {props.loggedIn ? <NavigationMain /> : <NavigationFilms />}
+        </>
+    )
 }
 
 export default Navigation;

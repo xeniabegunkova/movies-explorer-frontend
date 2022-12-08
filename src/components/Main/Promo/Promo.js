@@ -1,6 +1,5 @@
-import './Promo.css'
-import promoImg from '../../../images/promo.svg'
-//import NavTab from '../NavTab/NavTab';
+import './Promo.css';
+import promoImg from '../../../images/promo.svg';
 
 function Promo() {
     return (
