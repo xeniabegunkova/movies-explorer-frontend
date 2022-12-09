@@ -2,13 +2,16 @@
     display: none;
 }
 
+.navigation {
+    width: 1058px;
+}
+
 .navigation__movies {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 1058px;
     min-height: 74px;
     align-items: baseline;
 }
@@ -50,6 +53,10 @@
 @media screen and (max-width: 768px) {
     .navigation__movies {
         display: none;
+    }
+
+    .navigation {
+        width: 520px;
     }
 
     .navigation__open {

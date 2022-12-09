@@ -1,13 +1,19 @@
 import Header from "../Header/Header";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-//import Footer from "../Footer/Footer"
+import { moviesConstants } from "../../utils/movieConstants";
+import Footer from "../Footer/Footer";
+import './Movies.css';
+import MoreButton from "../MoreButton/MoreButton";
 
-function Movies(isOpen) {
+function Movies() {
     return (
         <>
-            <Header className={`nav ${isOpen && "nav__open"}`} />
+            <Header />
             <SearchForm />
-
+            <MoviesCardList moviesConstants={ moviesConstants } />
+            <MoreButton />
+            <Footer />
         </>
     )
 }
