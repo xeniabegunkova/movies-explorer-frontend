@@ -5,7 +5,7 @@
 
 .aboutMe__title {
     margin: 0;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 22px;
     line-height: 27px;
     letter-spacing: -0.04em;
@@ -31,7 +31,7 @@
 .aboutMe__name {
     margin: 0;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 50px;
     line-height: 58px;
     letter-spacing: -0.04em;
@@ -42,7 +42,7 @@
     padding-top: 18px;
     padding-bottom: 26px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 550;
     font-size: 18px;
     line-height: 20px;
     mix-blend-mode: normal;
@@ -51,7 +51,7 @@
 .aboutMe__description {
     margin: 0;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 14px;
     line-height: 22px;
     mix-blend-mode: normal;
@@ -62,7 +62,7 @@
     margin: 0;
     text-decoration: none;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 550;
     font-size: 14px;
     line-height: 17px;
 }

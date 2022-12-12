@@ -8,7 +8,7 @@
 .footer__text {
     margin: 0;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 13px;
     line-height: 16px;
     text-align: center;
@@ -28,7 +28,7 @@
 .footer__year {
     margin: 0;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 13px;
     line-height: 16px;
 }
@@ -42,7 +42,7 @@
     text-decoration: none;
     color: #000000;
     margin-right: 20px;
-    font-weight: 400;
+    font-weight: 450;
     font-size: 13px;
     line-height: 16px;
 }

@@ -84,3 +84,27 @@ export const moviesConstants = [
         _id: 13,
     },
 ]
+
+export const moviesSaveConstants = [
+    {
+        image: 'https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg',
+        title: '33 слова о дизайне',
+        save: 'true',
+        duration: '1ч 47м',
+        _id: 1,
+    },
+    {
+        image: 'https://kipmu.ru/wp-content/uploads/pchmnmr-scaled.jpg',
+        title: 'Дженис: Маленькая девочка грустит',
+        save: 'true',
+        duration: '1ч 42м',
+        _id: 2,
+    },
+    {
+        image: 'https://cs11.pikabu.ru/post_img/2019/07/07/12/1562530276168517093.jpg',
+        title: 'Соберись перед прыжком',
+        save: 'true',
+        duration: '1ч 10м',
+        _id: 3,
+    },
+]

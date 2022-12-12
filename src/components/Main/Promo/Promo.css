@@ -18,7 +18,7 @@
 .promo__title {
     margin: 0;
     font-size: 50px;
-    font-weight: 400;
+    font-weight: 450;
     line-height: 58px;
     max-width: 640px;
     min-height: 174px;
@@ -52,7 +52,7 @@
     color: #000000;
     min-height: 36px;
     width: 129px;
-    font-weight: 500;
+    font-weight: 550;
     font-size: 12px;
     line-height: 16px;
     border: 1px solid #000000;

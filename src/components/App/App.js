@@ -8,6 +8,7 @@ import Login from '../Login/Login';
 import Movies from '../Movies/Movies';
 import Error from '../Error/Error';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
 
 function App(loggedIn) {
   return (
@@ -34,6 +35,10 @@ function App(loggedIn) {
 
       <Routes>
         <Route exact path="/saved-movies" element={<SavedMovies />} />
+      </Routes>
+
+      <Routes>
+        <Route exact path="/profile" element={<Profile />} />
       </Routes>
 
       <Routes>
