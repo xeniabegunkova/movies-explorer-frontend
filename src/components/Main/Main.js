@@ -3,10 +3,12 @@ import AboutProject from "./AboutProject/AboutProject";
 import Portfolio from "./Portfolio/Portfolio";
 import Promo from "./Promo/Promo";
 import Techs from "./Techs/Techs";
+import Header from "../Header/Header";
 
-function Main() {
+function Main(loggedIn) {
     return (
         <>
+            <Header loggedIn={loggedIn} />
             <Promo />
             <AboutProject />
             <Techs />

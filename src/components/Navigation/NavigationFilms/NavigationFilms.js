@@ -36,7 +36,6 @@ function NavigationFilms() {
                 </nav>
 
                 <div className={`menu__mobile ${isOpen && "menu__mobile_open"}`} onClick={() => setIsOpen(!isOpen)}>
-                    <span></span>
                 </div>
             </section>
         </>

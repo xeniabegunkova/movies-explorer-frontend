@@ -13,9 +13,6 @@ import Profile from '../Profile/Profile';
 function App(loggedIn) {
   return (
     <div className="App">
-      <Routes>
-        <Route exact path="/" element={<Header loggedIn={loggedIn} />} />
-      </Routes>
 
       <Routes>
         <Route exact path="/" element={<Main />} />
