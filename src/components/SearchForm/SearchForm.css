@@ -28,7 +28,7 @@
     line-height: 18px;
 }
 
-.search__film:active, :hover, :focus {
+.search__film:active, :focus {
     outline: none;
     border: none;
 }
