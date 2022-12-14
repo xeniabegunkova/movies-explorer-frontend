@@ -6,10 +6,10 @@ function Portfolio() {
             <h2 className="portfolio__title">
                 Портфолио
             </h2>
-            <ul className="portfolio__links">
+            <ul className="portfolio__list">
                 <li className='portfolio__link'>
                     <a
-                        className="portfolio__link_name"
+                        className="portfolio__link-name"
                         href='https://github.com/'
                         rel="noreferrer"
                         target="_blank"
@@ -29,7 +29,7 @@ function Portfolio() {
                     </li>
                     <li className='portfolio__link'>
                         <a
-                            className="portfolio__link_name"
+                            className="portfolio__link-name"
                             href='https://github.com/'
                             rel="noreferrer"
                             target="_blank"

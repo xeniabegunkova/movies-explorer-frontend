@@ -30,7 +30,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
     .movie-list__elements {
         grid-template-columns: repeat(auto-fill, 300px);
         grid-template-rows: repeat(auto-fill, 237px);

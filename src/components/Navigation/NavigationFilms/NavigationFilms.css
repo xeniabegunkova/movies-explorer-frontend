@@ -1,9 +1,11 @@
-.navigation__films_name-mobile {
+.navigation__films-name_mobile {
     display: none;
 }
 
 .navigation {
-    width: 1058px;
+    max-width: 1058px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .navigation__movies {
@@ -27,7 +29,7 @@
     padding-left: 30px;
 }
 
-.navigation__films_name {
+.navigation__films-name {
     text-decoration: none;
     color: black;
     font-weight: 550;
@@ -35,11 +37,11 @@
     line-height: 18px;
 }
 
-.navigation__films_name:nth-child(2n+1) {
+.navigation__films-name:nth-child(2n+1) {
     font-weight: 400;
 }
 
-.navigation__films_name-account {
+.navigation__films-name_account {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +61,7 @@
         width: 520px;
     }
 
-    .navigation__open {
+    .navigation_open {
         padding: 0;
         margin: 0;
         z-index: 1;
@@ -130,13 +132,13 @@
         position: relative;
     }
 
-    .navigation__films_name-mobile {
+    .navigation__films-name_mobile {
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .navigation__films_name {
+    .navigation__films-name {
         text-decoration: none;
         font-style: normal;
         font-weight: 550;
@@ -150,7 +152,7 @@
         position: relative;
     }
 
-    .navigation__films_name::before {
+    .navigation__films-name::before {
         content: '';
         position: absolute;
         width: 100%;
@@ -163,22 +165,22 @@
         transform-origin: left;
     }
 
-    .navigation__films_name:hover::before {
+    .navigation__films-name:hover::before {
         opacity: 0.6;
         transform: scale(1);
     }
 
-    .navigation__films_name:nth-child(2n+1) {
+    .navigation__films-name:nth-child(2n+1) {
         font-weight: 550;
     }
 
-    .navigation__films_name-account {
+    .navigation__films-name_account {
         font-size: 14px;
         line-height: 16px;
         margin-bottom: 82px;
     }
 
-    .navigation__films_name-account:hover::before {
+    .navigation__films-name_account:hover::before {
         transform: scale(0);
     }
 
@@ -189,7 +191,11 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
+
+    .navigation {
+        width: 320px;
+    }
 
     .menu__movies {
         width: 321px;
@@ -197,14 +203,13 @@
     }
 
     .menu__movies_open {
-        width: 321px;
+        width: 320px;
         transform: translateX(0);
     }
 
     .menu__mobile {
+        width: 100%;
         background-size: 40px 43px;
-        background-position-x: 214px;
-        width: 321px;
         cursor: pointer;
         background-color: #FFFFFF;
         position: relative;
@@ -212,6 +217,7 @@
 
     .menu__mobile_open {
         background-image: url('../../../images/closeIcon.svg');
+        width: 320px;
         background-position-x: 275px;
         background-position-y: 13px;
         position: absolute;
@@ -223,7 +229,7 @@
         margin-top: 144px;
     }
 
-    .navigation__films_name-account {
+    .navigation__films-name_account {
         margin-bottom: 54px;
     }
 }

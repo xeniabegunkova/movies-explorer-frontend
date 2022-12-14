@@ -73,7 +73,7 @@ function Login(props) {
                 onSubmit={handleSubmit}
             >
 
-                <label className="login__input_name">
+                <label className="login__form-name">
                     E-mail
                 </label>
 
@@ -91,7 +91,7 @@ function Login(props) {
 
                 {(emailDirty && emailError) && <div className="login__input-error">{emailError}</div>}
 
-                <label className="login__input_name">
+                <label className="login__form-name">
                     Пароль
                 </label>
 
@@ -119,9 +119,9 @@ function Login(props) {
             </button>
 
             <div className="login__singup">
-                <p className="login__singup_text">
+                <p className="login__singup-text">
                     Ещё не зарегистрированы?
-                    <Link to="/signup" className="login__singup_link">
+                    <Link to="/signup" className="login__singup-link">
                         Регистрация
                     </Link>
                 </p>

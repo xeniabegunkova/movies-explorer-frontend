@@ -36,7 +36,7 @@
     padding-bottom: 65px;
 }
 
-.login__input_name {
+.login__form-name {
     margin: 0;
     color: #A0A0A0;
     font-style: normal;
@@ -47,7 +47,7 @@
     padding-top: 24px;
 }
 
-.login__input_name:first-child {
+.login__form-name:first-child {
     padding-top: 0;
 }
 
@@ -71,6 +71,8 @@
 }
 
 .login__button {
+    border: none;
+    border-radius: 3px;
     width: 396px;
     height: 45px;
     color: white;
@@ -91,7 +93,7 @@
     text-align: center;
 }
 
-.login__singup_text {
+.login__singup-text {
     margin: 0;
     color: #A0A0A0;
     font-style: normal;
@@ -100,7 +102,7 @@
     line-height: 17px;
 }
 
-.login__singup_link {
+.login__singup-link {
     margin: 0;
     margin-left: 6px;
     text-decoration: none;
@@ -128,7 +130,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
     .login {
         width: 260px;
         padding-top: 56px;
@@ -153,12 +155,12 @@
         padding-bottom: 30px;
     }
 
-    .login__singup_text {
+    .login__singup-text {
         font-size: 12px;
         line-height: 15px;
     }
 
-    .login__singup_link {
+    .login__singup-link {
         font-size: 12px;
         line-height: 15px;
     }

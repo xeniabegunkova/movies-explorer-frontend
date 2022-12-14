@@ -10,10 +10,10 @@ import Error from '../Error/Error';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 
-function App(loggedIn) {
+function App() {
   return (
     <div className="App">
-
+      
       <Routes>
         <Route exact path="/" element={<Main />} />
       </Routes>

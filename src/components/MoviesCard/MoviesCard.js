@@ -12,7 +12,7 @@ function MoviesCard({ movie }) {
     }
 
     const saveMovie = (
-        `movie__save ${isSave ? 'movie__save_active' : ''}`
+        `movie-card__save ${isSave ? 'movie-card__save-active' : ''}`
     )
     
     const location = useLocation();
@@ -24,12 +24,12 @@ function MoviesCard({ movie }) {
                 src={image}
                 alt={title} />
             <div className="movie-card__information">
-                <div className="movie__info">
+                <div className="movie-card__info">
                     <h2 className="movie-card__title">{title}</h2>
                         {location.pathname === '/movies' ?
                             <button className={saveMovie} type='button' onClick={handleSave} />
                             :
-                            <button className='movie__remove' type='button' />
+                            <button className='movie-card__remove' type='button' />
                         }
                 </div>
                 <p className="movie-card__duration">{duration}</p>

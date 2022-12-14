@@ -11,7 +11,7 @@ function Movies() {
         <>
             <Header />
             <SearchForm />
-            <MoviesCardList moviesConstants={ moviesConstants } />
+            <MoviesCardList moviesConstants={moviesConstants} />
             <MoreButton />
             <Footer />
         </>
@@ -19,3 +19,7 @@ function Movies() {
 }
 
 export default Movies;
+
+//<SearchForm />
+//<MoviesCardList moviesConstants={moviesConstants} />
+//<MoreButton />

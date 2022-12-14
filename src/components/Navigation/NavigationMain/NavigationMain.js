@@ -4,10 +4,10 @@ import './NavigationMain.css';
 function NavigationMain() {
     return (
         <nav className='navigation__main'>
-        <NavLink to="/signup" className='navigation__main_name'>
+        <NavLink to="/signup" className='navigation__main-name'>
             Регистрация
         </NavLink>
-        <NavLink to="/signin" className='navigation__main_name navigation__main_name-button'>
+        <NavLink to="/signin" className='navigation__main-name navigation__main-name_button'>
             Войти
         </NavLink>
     </nav>

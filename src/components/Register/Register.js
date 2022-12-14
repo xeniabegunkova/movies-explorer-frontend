@@ -93,7 +93,7 @@ function Register(props) {
                 onSubmit={handleSubmit}
             >
 
-                <label className="auth__input_name">
+                <label className="auth__input-name">
                     Имя
                 </label>
 
@@ -113,7 +113,7 @@ function Register(props) {
 
                 {(nameDirty && nameError) && <div className="auth__input-error">{nameError}</div>}
 
-                <label className="auth__input_name">
+                <label className="auth__input-name">
                     E-mail
                 </label>
 
@@ -131,7 +131,7 @@ function Register(props) {
 
                 {(emailDirty && emailError) && <div className="auth__input-error">{emailError}</div>}
 
-                <label className="auth__input_name">
+                <label className="auth__input-name">
                     Пароль
                 </label>
 
@@ -159,9 +159,9 @@ function Register(props) {
             </button>
 
             <div className="auth__singup">
-                <p className="auth__singup_text">
+                <p className="auth__singup-text">
                     Уже зарегистрированы?
-                    <Link to="/signin" className="auth__singup_link">
+                    <Link to="/signin" className="auth__singup-link">
                         Войти
                     </Link>
                 </p>

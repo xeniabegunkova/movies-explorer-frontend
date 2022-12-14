@@ -3,24 +3,24 @@ import "./AboutMe.css"
 
 function AboutMe() {
     return (
-        <section className="aboutMe">
-            <h2 className="aboutMe__title">
+        <section className="about-me">
+            <h2 className="about-me__title">
                 Студент
             </h2>
-            <div className="aboutMe__profile">
-                <div className="aboutMe__info">
-                    <h3 className="aboutMe__name">
+            <div className="about-me__profile">
+                <div className="about-me__info">
+                    <h3 className="about-me__name">
                         Виталий
                     </h3>
-                    <p className="aboutMe__information">
+                    <p className="about-me__information">
                         Фронтенд-разработчик, 30 лет
                     </p>
-                    <p className="aboutMe__description">
+                    <p className="about-me__description">
                         Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
                         и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
                     </p>
                     <a
-                        className='aboutMe__link'
+                        className='about-me__link'
                         href='https://github.com/'
                         rel="noreferrer"
                         target="_blank"
@@ -31,7 +31,7 @@ function AboutMe() {
                 <img
                     src={photoVitaliy}
                     alt="Pic of Vilaliy"
-                    className="aboutMe__img"
+                    className="about-me__img"
                 />
             </div>
         </section>

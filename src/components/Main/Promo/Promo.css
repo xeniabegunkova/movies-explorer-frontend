@@ -104,10 +104,10 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
     .promo {
+        margin: auto;
         padding: 70px 10px 40px 10px;
-        width: 300px;
     }
 
     .promo__img {
@@ -117,6 +117,7 @@
     }
 
     .promo__title {
+        margin: auto;
         font-size: 30px;
         line-height: 38px;
         letter-spacing: -0.04em;

@@ -7,6 +7,12 @@
     background: #FDFDFD;
     border-radius: 6px;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: opacity .1s ease;
+}
+
+.movie-card:hover {
+    opacity: 0.8;
 }
 
 .movie-card__information {
@@ -26,7 +32,7 @@
     border-top-right-radius: 6px;
 }
 
-.movie__info {
+.movie-card__info {
     margin: 0;
     padding: 0;
     display: flex;
@@ -64,7 +70,7 @@
     padding-bottom: 16px;
 }
 
-.movie__save {
+.movie-card__save {
     background-image: url(../../images/inactiveSave.svg);
     background-position: center;
     margin: 0;
@@ -78,17 +84,13 @@
     cursor: pointer;
 }
 
-.movie__save_button {
-    opacity: 0.6;
-}
-
-.movie__save_active {
+.movie-card__save-active {
     margin: 0;
     background-image: url(../../images/activeSave.svg);
     background-color: transparent;
 }
 
-.movie__remove {
+.movie-card__remove {
     background-image: none;
     background-repeat: no-repeat;
     border: none;
@@ -118,13 +120,13 @@
         height: 190px;
     }
 
-    .movie__info {
+    .movie-card__info {
         padding-top: 14px;
         padding-right: 14px;
         height: 16px;
     }
 
-    .movie__save_button {
+    .movie-card__save {
         width: 30px;
     }
 
@@ -133,7 +135,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
     .movie-card {
         width: 300px;
         height: 237px;
@@ -144,7 +146,7 @@
         height: 168px;
     }
 
-    .movie__info {
+    .movie-card__info {
         padding-top: 14px;
         padding-right: 10px;
         height: 15px;

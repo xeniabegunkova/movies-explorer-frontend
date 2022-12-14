@@ -1,12 +1,15 @@
 .header {
-    margin: 0;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     padding-left: 70px;
     padding-right: 70px;
+    width: 100%;
+    max-width: 1280px;
+    box-sizing: border-box;
 }
 
-.header__pink {
+.header_pink {
     background-color: #F3C1F8;
 }
 
@@ -26,7 +29,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
     .header {
         padding-left: 14px;
         padding-right: 14px;

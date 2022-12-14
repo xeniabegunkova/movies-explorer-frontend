@@ -23,7 +23,7 @@
     column-gap: 40px;
 }
 
-.about__info_name {
+.about__info-name {
     margin: 0;
     font-style: normal;
     font-weight: 450;
@@ -33,7 +33,7 @@
     text-align: left;
 }
 
-.about__info_text {
+.about__info-text {
     margin: 0;
     font-style: normal;
     font-weight: 450;
@@ -49,7 +49,7 @@
     grid-template-columns: 1fr 4fr;
 }
 
-.about__timing_first {
+.about__timing-first {
     margin: 0;
     background-color: #000;
     color: white;
@@ -63,7 +63,7 @@
     align-items: center;
 }
 
-.about__timing_fourth {
+.about__timing-fourth {
     margin: 0;
     background: #F2F2F2;
     display: flex;
@@ -75,7 +75,7 @@
     line-height: 17px;
 }
 
-.about__timing_description {
+.about__timing-description {
     margin: 0;
     padding-top: 14px;
     padding-bottom: 155px;
@@ -100,7 +100,7 @@
         column-gap: 30px;
     }
 
-    .about__timing_description {
+    .about__timing-description {
         padding-top: 23px;
         padding-bottom: 90px;
     }
@@ -127,11 +127,11 @@
         flex-direction: column;
     }
 
-    .about__info_name {
+    .about__info-name {
         font-size: 18px;
         line-height: 22px;
     }
-    .about__info_text {
+    .about__info-text {
         font-size: 11px;
         line-height: 16px;
         padding-top: 16px;
@@ -139,7 +139,7 @@
         text-align: left;
     }
 
-    .about__info_text:last-child {
+    .about__info-text:last-child {
         padding-bottom: 60px;
     }
 
@@ -148,18 +148,18 @@
         grid-template-columns: 1.5fr 3fr;
     }
 
-    .about__timing_first {
+    .about__timing-first {
         font-size: 11px;
         line-height: 13px;
         height: 35px;
     }
 
-    .about__timing_fourth {
+    .about__timing-fourth {
         font-size: 11px;
         line-height: 13px;
     }
 
-    .about__timing_description {
+    .about__timing-description {
         font-size: 11px;
         line-height: 13px;
         padding-bottom: 93px;

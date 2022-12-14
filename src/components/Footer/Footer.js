@@ -2,15 +2,15 @@ import "./Footer.css"
 
 function Footer() {
     return (
-        <section className="footer">
+        <footer className="footer">
             <h2 className="footer__text">
                 Учебный проект Яндекс.Практикум х BeatFilm.
             </h2>
             <div className="footer__info">
                 <p className="footer__year">&copy; {new Date().getFullYear()}</p>
-                <div className="footer__links">
+                <div className="footer__list">
                     <a
-                        className="footer__link"
+                        className="footer__list-link"
                         href="https://practicum.yandex.ru/"
                         rel="noreferrer"
                         target="_blank"
@@ -18,7 +18,7 @@ function Footer() {
                         Яндекс.Практикум
                     </a>
                     <a
-                        className="footer__link"
+                        className="footer__list-link"
                         href="https://github.com/"
                         rel="noreferrer"
                         target="_blank"
@@ -27,7 +27,7 @@ function Footer() {
                     </a>
                 </div>
             </div>
-        </section>
+        </footer>
     )
 }
 

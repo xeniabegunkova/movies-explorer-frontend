@@ -2,9 +2,9 @@ import './MoreButton.css'
 
 function MoreButton() {
     return (
-        <>
-            <button className="movies__more-button">Ещё</button>
-        </>
+        <section className='movies-more'>
+            <button className="movies-more__button">Ещё</button>
+        </section>
     )
 }
 

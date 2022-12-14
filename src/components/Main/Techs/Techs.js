@@ -14,26 +14,26 @@ function Techs() {
                     На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.
                 </p>
             </div>
-            <ul className="techs__list">
-                <li className="techs__points">
+            <ul className="techs-list">
+                <li className="techs-list__points">
                     HTML
                 </li>
-                <li className="techs__points">
+                <li className="techs-list__points">
                     CSS
                 </li>
-                <li className="techs__points">
+                <li className="techs-list__points">
                     JS
                 </li>
-                <li className="techs__points">
+                <li className="techs-list__points">
                     React
                 </li>
-                <li className="techs__points">
+                <li className="techs-list__points">
                     Git
                 </li>
-                <li className="techs__points">
+                <li className="techs-list__points">
                     Express.js
                 </li>
-                <li className="techs__points">
+                <li className="techs-list__points">
                     mongoDB
                 </li>
             </ul>

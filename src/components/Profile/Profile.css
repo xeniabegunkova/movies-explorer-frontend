@@ -4,6 +4,7 @@
     padding-bottom: 70px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .profile__title {
@@ -81,6 +82,7 @@
 .profile__button:hover{ 
     opacity: 0.6;
 }
+
 .profile__button_logout {
     text-decoration: none;
     color: #FF004D;
@@ -103,7 +105,7 @@
     
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
     .profile {
         width: 320px;
         padding-bottom: 40px;

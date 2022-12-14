@@ -15,7 +15,7 @@
     padding-bottom: 50px;
 }
 
-.portfolio__links {
+.portfolio__list {
     padding: 0;
     margin: 0;
     display: flex;
@@ -40,7 +40,7 @@
     padding-top: 0;
 }
 
-.portfolio__link_name {
+.portfolio__link-name {
     margin: 0;
     display: block;
     text-align: start;
@@ -65,7 +65,7 @@
         padding-bottom: 19px;
     }
 
-    .portfolio__link_name {
+    .portfolio__link-name {
         font-size: 28px;
     }
 }
@@ -81,7 +81,7 @@
         padding-bottom: 40px;
     }
 
-    .portfolio__link_name {
+    .portfolio__link-name {
         font-size: 18px;
         line-height: 28px;
         background-size: 18px;

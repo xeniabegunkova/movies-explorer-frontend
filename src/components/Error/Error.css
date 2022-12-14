@@ -31,6 +31,7 @@
     text-decoration: none;
     color: black;
     padding-top: 184px;
+    padding-bottom: 60px;
     font-style: normal;
     font-weight: 450;
     font-size: 14px;
@@ -45,6 +46,10 @@
 @media screen and (max-width: 768px) {
     .error__title {
         margin-top: 408px;
+    }
+
+    .error__link {
+        padding-bottom: 222px;
     }
 }
 

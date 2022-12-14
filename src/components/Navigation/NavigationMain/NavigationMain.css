@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-.navigation__main_name {
+.navigation__main-name {
     margin: 0;
     cursor: pointer;
     color: #000;
@@ -16,13 +16,13 @@
     line-height: 16px;
 }
 
-.navigation__main_name:last-child {
+.navigation__main-name:last-child {
     color: white;
     margin-top: 21px;
     margin-bottom: 21px;
 }
 
-.navigation__main_name-button {
+.navigation__main-name_button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,17 +33,22 @@
     margin-left: 30px;
 }
 
-.navigation__main_name:hover {
+.navigation__main-name:hover {
     opacity: 0.6;
 }
 
-@media screen and (max-width: 320px) {
-    .navigation__main_name:last-child {
+@media screen and (max-width: 426px) {
+
+    .navigation__main-name {
+        font-size: 10px;
+    }
+    
+    .navigation__main-name:last-child {
         margin-top: 24px;
         margin-bottom: 24px;
     }
 
-    .navigation__main_name-button {
+    .navigation__main-name_button {
         width: 54px;
         height: 26px;
         margin-left: 14px;
