@@ -19,7 +19,7 @@ function Portfolio() {
                 </li>
                     <li className='portfolio__link'>
                         <a
-                            className="portfolio__link_name"
+                            className="portfolio__link-name"
                             href='https://github.com/'
                             rel="noreferrer"
                             target="_blank"

@@ -3,9 +3,8 @@
 }
 
 .navigation {
-    max-width: 1058px;
+    width: 1058px;
     box-sizing: border-box;
-    width: 100%;
 }
 
 .navigation__movies {
@@ -26,7 +25,6 @@
     margin-top: 24px;
     width: 212px;
     font-weight: 550;
-    padding-left: 30px;
 }
 
 .navigation__films-name {
@@ -52,7 +50,7 @@
     border-radius: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .navigation__movies {
         display: none;
     }
@@ -76,24 +74,11 @@
         width: 100vw;
     }
 
-    .menu__movies {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        margin-top: 80px;
-        width: 520px;
-        background-color: #FFFFFF;
-        z-index: 10;
-        transform: translateX(120%);
-        transition: all 0.45s;
-    }
-
     .menu__movies_open {
         transform: translateX(0);
     }
 
-    .menu__mobile {
+    .navigation__menu-close {
         background-image: url('../../../images/menu.svg');
         background-size: 44px 44px;
         width: 520px;
@@ -106,7 +91,7 @@
         position: relative;
     }
 
-    .menu__mobile_open {
+    .navigation__menu-open {
         background-image: url('../../../images/closeIcon.svg');
         background-position-x: 466px;
         background-position-y: 22.4px;
@@ -191,10 +176,12 @@
     }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 500px) {
 
     .navigation {
-        width: 320px;
+        max-width: 500px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .menu__movies {
@@ -207,15 +194,15 @@
         transform: translateX(0);
     }
 
-    .menu__mobile {
-        width: 100%;
+    .navigation__menu-close {
+        width: 254px;
         background-size: 40px 43px;
         cursor: pointer;
         background-color: #FFFFFF;
         position: relative;
     }
 
-    .menu__mobile_open {
+    .navigation__menu-open {
         background-image: url('../../../images/closeIcon.svg');
         width: 320px;
         background-position-x: 275px;

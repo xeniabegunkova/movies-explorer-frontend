@@ -63,7 +63,7 @@
     opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 790px) {
     .promo {
         padding: 44px 140px;
     }
@@ -104,7 +104,7 @@
     }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 450px) {
     .promo {
         margin: auto;
         padding: 70px 10px 40px 10px;

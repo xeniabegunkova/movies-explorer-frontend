@@ -8,8 +8,8 @@ function NavigationFilms() {
 
     return (
         <>
-            <section className={`navigation ${isOpen && "navigation_open"}`}>
-                <nav className={`navigation__movies ${isOpen && "navigation__movies_open"}`}>
+            <div className={`navigation ${isOpen ? "navigation_open" : ""}`}>
+                <nav className={`navigation__movies ${isOpen ? "navigation__movies_open" : ""}`}>
                     <div className="navigation__films">
                         <NavLink
                             to="/"
@@ -35,9 +35,9 @@ function NavigationFilms() {
                     </NavLink>
                 </nav>
 
-                <div className={`menu__mobile ${isOpen && "menu__mobile_open"}`} onClick={() => setIsOpen(!isOpen)}>
+                <div className={`navigation__menu-close ${isOpen ? "navigation__menu-open" : ""}`} onClick={() => setIsOpen(!isOpen)}>
                 </div>
-            </section>
+            </div>
         </>
     )
 }

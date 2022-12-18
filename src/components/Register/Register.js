@@ -99,7 +99,7 @@ function Register(props) {
 
                 <input
                     className="auth__form-input"
-                    type="name"
+                    type="text"
                     name="name"
                     id="name"
                     pattern='^[A-Za-zА-Яа-яЁё /s -]+$'

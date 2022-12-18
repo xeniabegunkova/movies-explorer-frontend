@@ -13,9 +13,9 @@ function SearchForm() {
             <div className='check'>
                 <label className="checkbox">
                     <input className="checkbox__input" type="checkbox" />
-                    <div className='switch'></div>
+                    <span className='switch'></span>
                 </label>
-                <span className="checkbox__text">
+                <span className="check__text">
                     Короткометражки
                 </span>
             </div>

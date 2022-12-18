@@ -1,6 +1,8 @@
 .auth {
     margin: 0 auto;
-    width: 396px;
+    max-width: 396px;
+    width: 100%;
+    box-sizing: border-box;
     padding-top: 70px;
     display: flex;
     flex-direction: column;
@@ -132,7 +134,9 @@
 
 @media screen and (max-width: 426px) {
     .auth {
-        width: 260px;
+        max-width: 260px;
+        width: 100%;
+        box-sizing: border-box;
         padding-top: 56px;
     }
 

@@ -29,7 +29,7 @@
 }
 
 .search__film:active, :focus {
-    outline: none;
+    outline: 0.5px solid;
     border: none;
 }
 
@@ -70,7 +70,7 @@
     display: flex;
 }
 
-.checkbox__text {
+.check__text {
     margin-left: 44%;
     padding-top: 31px;
     font-style: normal;
@@ -137,7 +137,7 @@
 }
 
 @media screen and (max-width: 426px) {
-    .checkbox__text {
+    .check__text {
         margin-left: 35%;
         padding-top: 38px;
         font-size: 11px;
@@ -162,7 +162,7 @@
         padding-left: 13px;
     }
 
-    .checkbox__text {
+    .check__text {
         margin-left: 25%;
     }
 

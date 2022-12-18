@@ -5,13 +5,15 @@ function MoviesCardList({ moviesConstants }) {
     return (
         <section className='movie-list'>
             <ul className='movie-list__elements'>
-                {
-                    moviesConstants.map((movie) => {
-                        return (
-                            <MoviesCard movie={movie} key={movie._id} saved={false} />
-                        )
-                    }
-                    )}
+                <li className="movie-list__elements-card">
+                    {
+                        moviesConstants.map((movie) => {
+                            return (
+                                <MoviesCard movie={movie} key={movie._id} saved={false} />
+                            )
+                        }
+                        )}
+                </li>
             </ul>
         </section>
     )
