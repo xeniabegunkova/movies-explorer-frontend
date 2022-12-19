@@ -112,17 +112,17 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 330px) {
     .about {
         padding-left: 14px;
         padding-right: 14px;
-        max-width: 284px;
+        max-width: 248px;
         width: 100%;
         box-sizing: border-box;
     }
 
     .about__title {
-        width: 284px;
+        width: 100%;
         font-size: 18px;
         line-height: 22px;
         margin-top: 70px;

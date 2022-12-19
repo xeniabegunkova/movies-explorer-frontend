@@ -69,7 +69,8 @@
     .footer__text {
         line-height: 15px;
         padding-bottom: 21px;
-        width: 300px;
+        max-width: 300px;
+        width: 100%;
     }
 
     .footer__info {

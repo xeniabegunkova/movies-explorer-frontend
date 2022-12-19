@@ -58,7 +58,7 @@ function Login(props) {
         <section
             className="login">
             <div className="login__greetings">
-                <Link to="/" className="auth__link">
+                <Link to="/" className="login__link">
                     <img
                         src={logo}
                         alt="login img"
