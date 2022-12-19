@@ -18,7 +18,7 @@ function MoviesCard({ movie }) {
     const location = useLocation();
 
     return (
-        <section className="movie-card">
+        <li className="movie-card">
             <img
                 className="movie-card__img"
                 src={image}
@@ -34,7 +34,7 @@ function MoviesCard({ movie }) {
                 </div>
                 <p className="movie-card__duration">{duration}</p>
             </div>
-        </section>
+        </li>
     )
 }
 

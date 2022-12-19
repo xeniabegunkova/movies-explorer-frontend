@@ -28,27 +28,27 @@
     line-height: 18px;
 }
 
-.search__film:active, :focus {
-    outline: 0.5px solid;
-    border: none;
+.search__input:active, :focus {
+    outline: none;
+    border: 1px solid black;
 }
 
-.search__film::-ms-clear {
+.search__input::-ms-clear {
     display: none;
     width: 0;
     height: 0;
 }
 
-.search__film::-ms-reveal {
+.search__input::-ms-reveal {
     display: none;
     width: 0;
     height: 0;
 }
 
-.search__film::-webkit-search-decoration,
-.search__film::-webkit-search-cancel-button,
-.search__film::-webkit-search-results-button,
-.search__film::-webkit-search-results-decoration {
+.search__input::-webkit-search-decoration,
+.search__input::-webkit-search-cancel-button,
+.search__input::-webkit-search-results-button,
+.search__input::-webkit-search-results-decoration {
     display: none;
 }
 

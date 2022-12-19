@@ -27,6 +27,11 @@
     font-weight: 550;
 }
 
+.navigation__films-name:focus, :active {
+    outline: none;
+    border: none;
+}
+
 .navigation__films-name {
     text-decoration: none;
     color: black;
@@ -50,7 +55,7 @@
     border-radius: 20px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
     .navigation__movies {
         display: none;
     }
@@ -176,7 +181,11 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
+
+    .navigation__movies_open {
+        width: 320px;
+    }
 
     .navigation {
         max-width: 500px;

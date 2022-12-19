@@ -2,6 +2,9 @@
     margin: 0;
     padding-left: 70px;
     padding-right: 70px;
+    max-width: 1280px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .about__title {
@@ -88,6 +91,9 @@
 
 @media screen and (max-width: 768px) {
     .about {
+        max-width: 768px;
+        width: 100%;
+        box-sizing: border-box;
         padding-left: 50px;
         padding-right: 50px;
     }
@@ -104,17 +110,19 @@
         padding-top: 23px;
         padding-bottom: 90px;
     }
-
 }
 
 @media screen and (max-width: 320px) {
     .about {
         padding-left: 14px;
         padding-right: 14px;
-        width: 284px;
+        max-width: 284px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .about__title {
+        width: 284px;
         font-size: 18px;
         line-height: 22px;
         margin-top: 70px;
@@ -122,16 +130,19 @@
     }
 
     .about__information {
+        max-width: 284px;
         padding-top: 60px;
         display: flex;
         flex-direction: column;
     }
 
     .about__info-name {
+        max-width: 284px;
         font-size: 18px;
         line-height: 22px;
     }
     .about__info-text {
+        max-width: 284px;
         font-size: 11px;
         line-height: 16px;
         padding-top: 16px;

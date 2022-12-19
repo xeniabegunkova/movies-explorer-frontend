@@ -5,7 +5,6 @@ function MoviesCardList({ moviesConstants }) {
     return (
         <section className='movie-list'>
             <ul className='movie-list__elements'>
-                <li className="movie-list__elements-card">
                     {
                         moviesConstants.map((movie) => {
                             return (
@@ -13,7 +12,6 @@ function MoviesCardList({ moviesConstants }) {
                             )
                         }
                         )}
-                </li>
             </ul>
         </section>
     )

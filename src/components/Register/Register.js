@@ -78,11 +78,13 @@ function Register(props) {
         <section
             className="auth">
             <div className="auth__greetings">
-                <img
-                    src={logo}
-                    alt="auth img"
-                    className="auth__img"
-                />
+                <Link to="/" className="auth__link">
+                    <img
+                        src={logo}
+                        alt="auth img"
+                        className="auth__img"
+                    />
+                </Link>
                 <h2 className="auth__title">
                     Добро пожаловать!
                 </h2>
@@ -136,7 +138,7 @@ function Register(props) {
                 </label>
 
                 <input
-                    className= "auth__form-input" 
+                    className="auth__form-input"
                     value={password || ''}
                     type="password"
                     name="password"
