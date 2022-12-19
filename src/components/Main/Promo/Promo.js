@@ -26,3 +26,4 @@ function Promo() {
 export default Promo;
 
 //https://htmlacademy.ru/courses/305/run/5
+//https://cssgrid-generator.netlify.app/
