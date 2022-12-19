@@ -181,7 +181,7 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 595px) {
 
     .navigation__movies_open {
         width: 320px;
