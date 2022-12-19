@@ -181,14 +181,13 @@
     }
 }
 
-@media screen and (max-width: 595px) {
+@media screen and (max-width: 600px) {
 
     .navigation__movies_open {
         width: 320px;
     }
 
     .navigation {
-        max-width: 500px;
         width: 100%;
         box-sizing: border-box;
     }
