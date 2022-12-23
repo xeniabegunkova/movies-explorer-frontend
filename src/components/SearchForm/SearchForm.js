@@ -1,11 +1,40 @@
+import { useState } from 'react';
 import './SearchForm.css'
 //import btn from '../../images/checkboxBtn.svg';
 
-function SearchForm() {
+function SearchForm(props) {
+    const [movies, setMovies] = useState('');
+    const [error, setError] = useState('');
+
+    const handleMovies = (e) => {
+        setMovies(e.target.value)
+        if (e.target.value) {
+            setError('')
+        }
+    }
+
+    function handleSubmit(e) {
+        // Запрещаем браузеру переходить по адресу формы
+        e.preventDefault();
+        if (movies === '') {
+            setError('Нужно ввести ключевое слово')
+        } else {
+            props.getData(movies)
+        }
+        // Передаём значения управляемых компонентов во внешний обработчик
+    }
+
+
     return (
         <section className="search">
-            <form className="search__form">
-                <input type="search" className="search__input" placeholder="Фильм" required/>
+            <form className="search__form" onSubmit={handleSubmit} noValidate>
+                <input 
+                type="search" 
+                className="search__input" 
+                placeholder="Фильм"
+                onChange={e => handleMovies(e)}
+                value={movies} 
+                required />
                 <button className="search__button" type="submit">
                 </button>
             </form>

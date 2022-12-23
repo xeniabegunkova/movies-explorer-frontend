@@ -69,6 +69,7 @@
 }
 
 .login__form-input:focus {
+    border: none;
     border-bottom: 1px solid black;
 }
 
@@ -83,6 +84,19 @@
     font-size: 12px;
     line-height: 15px;
     margin-top: 179px;
+}
+
+.login__button:hover {
+    opacity: 0.6;
+}
+
+.login__button_unactive {
+    cursor: auto;
+    opacity: 0.2;
+}
+
+.login__button_unactive:hover {
+    opacity: 0.2;
 }
 
 .login__singup {
@@ -132,7 +146,7 @@
     }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 713px) {
     .login {
         max-width: 260px;
         width: 100%;

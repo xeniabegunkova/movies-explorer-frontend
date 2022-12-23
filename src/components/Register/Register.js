@@ -17,14 +17,14 @@ function Register(props) {
 
     const handelerCheck = (e) => {
         switch (e.target.name) {
+            case 'name':
+                setNameDirty(true);
+                break;
             case 'email':
                 setEmailDirty(true);
                 break;
             case 'password':
                 setpasswordDirty(true);
-                break;
-            case 'name':
-                setNameDirty(true);
                 break;
             default:
         }
@@ -46,7 +46,7 @@ function Register(props) {
     function handlePasswordChange(e) {
         setPassword(e.target.value);
         if (e.target.value.length < 8 || e.target.value.length > 20) {
-            setPasswordError('Пароль должен содержать минимум 8 символов')
+            setPasswordError('Пароль должен содержать от 8 до 20 символов')
             if (!e.target.value) {
                 setPasswordError('Что-то пошло не так...')
             }
@@ -58,7 +58,7 @@ function Register(props) {
     function handleEmailChange(e) {
         setEmail(e.target.value);
         const re =
-            /^(([^<>()[\]\\.,;:\s@\\"]+(\.[^<>()[\]\\.,;:\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\]\\.,;:\s@\\"]+\.)+[^<>()[\]\\.,;:\s@\\"]{2,})$/i;
+            /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
         if (!re.test(String(e.target.value).toLowerCase())) {
             setEmailError('E-mail введен некорректно')
         } else {
@@ -74,6 +74,7 @@ function Register(props) {
             password
         );
     }
+
     return (
         <section
             className="auth">
@@ -104,8 +105,9 @@ function Register(props) {
                     type="text"
                     name="name"
                     id="name"
+                    value={name.value} 
                     pattern='^[A-Za-zА-Яа-яЁё /s -]+$'
-                    placeholder="Виталий"
+                    placeholder="Имя"
                     minLength="2"
                     maxLength="20"
                     onBlur={e => handelerCheck(e)}
@@ -121,11 +123,11 @@ function Register(props) {
 
                 <input
                     className="auth__form-input"
-                    value={email || ''}
                     type="email"
                     name="email"
                     id="email"
-                    placeholder="pochta@yandex.ru"
+                    value={email.value} 
+                    placeholder="Почта"
                     onChange={e => handleEmailChange(e)}
                     onBlur={e => handelerCheck(e)}
                     required
@@ -135,11 +137,11 @@ function Register(props) {
 
                 <label className="auth__input-name">
                     Пароль
-                </label>
+                </label> 
 
                 <input
                     className="auth__form-input"
-                    value={password || ''}
+                    value={password.value} 
                     type="password"
                     name="password"
                     id="password"
@@ -152,23 +154,24 @@ function Register(props) {
                 />
                 {(passwordDirty && passwordError) && <div className="auth__input-error">{passwordError}</div>}
 
+                <button
+                    className={!nameError && !emailError && !passwordError && password !== '' && email !== '' && name !== '' ? 'auth__button' : "auth__button auth__button_unactive"}
+                    type="submit"
+                    disabled={!nameError && !emailError && !passwordError ? false : true}
+                >
+                    Зарегистрироваться
+                </button>
+
+                <div className="auth__singup">
+                    <p className="auth__singup-text">
+                        Уже зарегистрированы?
+                        <Link to="/signin" className="auth__singup-link">
+                            Войти
+                        </Link>
+                    </p>
+                </div>
+
             </form>
-
-            <button
-                className="auth__button"
-                type="submit">
-                Зарегистрироваться
-            </button>
-
-            <div className="auth__singup">
-                <p className="auth__singup-text">
-                    Уже зарегистрированы?
-                    <Link to="/signin" className="auth__singup-link">
-                        Войти
-                    </Link>
-                </p>
-            </div>
-
         </section>
     )
 }

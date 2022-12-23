@@ -49,7 +49,7 @@ function Login(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.handleRegistration(
+        props.handleLogin(
             email,
             password
         );
@@ -112,22 +112,27 @@ function Login(props) {
                 />
                 {(passwordDirty && passwordError) && <div className="login__input-error">{passwordError}</div>}
 
+                <button
+                    className={
+                        !emailError && !passwordError && password !== '' && email !== ''
+                            ?
+                            'login__button' : "login__button login__button_unactive"
+                    }
+                    type="submit">
+                    Войти
+                </button>
+
+                <div className="login__singup">
+                    <p className="login__singup-text">
+                        Ещё не зарегистрированы?
+                        <Link to="/signup" className="login__singup-link">
+                            Регистрация
+                        </Link>
+                    </p>
+                </div>
             </form>
 
-            <button
-                className="login__button"
-                type="submit">
-                Войти
-            </button>
 
-            <div className="login__singup">
-                <p className="login__singup-text">
-                    Ещё не зарегистрированы?
-                    <Link to="/signup" className="login__singup-link">
-                        Регистрация
-                    </Link>
-                </p>
-            </div>
 
         </section>
     )
