@@ -21,6 +21,12 @@
     box-sizing: border-box;
 }
 
+.movies-more__button:focus,
+:active {
+    outline: none;
+    border: none;
+}
+
 .movies-more__button:hover {
     opacity: 0.6;
 }

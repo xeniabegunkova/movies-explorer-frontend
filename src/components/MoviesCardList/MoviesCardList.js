@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
-import { CurrentMoviesContext } from "../../contexts/CurrentMoviesContext";
-import { useContext } from "react";
+import { getMovieList } from '../../utils/MoviesApi';
+import MoreButton from "../MoreButton/MoreButton";
 
 function MoviesCardList() {
 
-    const movies = useContext(CurrentMoviesContext)
-
-    console.log(movies)
+    const [data, setData] = useState([]);
+    const [size, setSize] = useState(window.innerWidth);
+    const [moviesCounter, setMoviesCounter] = useState();
+    const [more, setMore] = useState();
 
     //width of screen
 
-    /*const screenWidth_1280 = 1280;
-    const screenWidth_768 = 768;
+    const screenWidth_1280 = 1280;
+    const screenWidth_768 = 600;
 
     //num of cells
 
@@ -25,64 +26,55 @@ function MoviesCardList() {
 
     const numberOfCellsInARow_1280 = 3;
     const numberOfCellsInARow_768 = 2;
-    const numberOfCellsInARow_600 = 1;
 
-    const width = window.innerWidth;
+    useEffect(() => {
+        getMovieList()
+            .then((response) => {
+                if (response) {
+                    setData(response)
+                }
+            })
+    }, [])
 
-    const [moviesCounter, setMoviesCounter] = useState();
-    const [more, setMore] = useState();
-
-    const countOfMovies = (width) => {
-        if (width > screenWidth_1280) {
+    useEffect(() => {
+        const width = () => setSize(window.innerWidth);
+        window.addEventListener('resize', width);
+        if (size > screenWidth_1280) {
             setMoviesCounter(numberOfCells_1280);
-            return setMore(numberOfCellsInARow_1280)
-        } else if (width > screenWidth_768) {
+            setMore(numberOfCellsInARow_1280)
+        } else if (size > screenWidth_768) {
             setMoviesCounter(numberOfCells_768);
-            return setMore(numberOfCellsInARow_768);
-        } else
-            setMoviesCounter(numberOfCells_600);
-        return setMore(numberOfCellsInARow_600);
-    }
-
-    useEffect(() => {
-        const width = window.innerWidth;
-        countOfMovies(width);
-    })
-
-    useEffect(() => {
-        const timeout = (e) => setTimeout(countOfMovies(e), 3000);
-        window.onresize = function (e) {
-            timeout(e.currentTarget.innerWidth)
-        }
-        return window.onresize = function (e) {
-            timeout(e.currentTarget.innerWidth)
-        }
-    }, []);
-
-    const moreMovies = () => {
-        if (width >= screenWidth_1280) {
-            setMore((prev) => prev + numberOfCellsInARow_1280);
+            setMore(numberOfCellsInARow_768);
         } else {
-            setMore((prev) => prev + numberOfCellsInARow_768);
+            setMoviesCounter(numberOfCells_600);
+            setMore(numberOfCellsInARow_768);
         }
-    };*/
+        return () => window.removeEventListener('resize', width)
+    }, [size]);
 
     return (
-        <section className='movie-list'>
-            <ul className='movie-list__elements'>
-                {
-                    movies.map((movie) => {
-                        return (
-                            <MoviesCard
-                                movie={movie}
-                                key={movie._id}
-                            />
-                        )
-                    }
-                    )}
-            </ul>
-                
-        </section>
+        <>
+            <section className='movie-list'>
+                <ul className='movie-list__elements'>
+                    {
+                        data.slice(0, moviesCounter).map((movie) => {
+                            return (
+                                <MoviesCard
+                                    key={movie.id}
+                                    nameRU={movie.nameRU}
+                                    image={movie.image}
+                                    trailerLink={movie.trailerLink}
+                                    duration={movie.duration}
+                                />
+                            )
+                        }
+                        )}
+                </ul>
+            </section>
+            {data.length > moviesCounter ?
+                <MoreButton onClick={() => setMoviesCounter(moviesCounter + more)} /> : ''
+            }
+        </>
     )
 }
 

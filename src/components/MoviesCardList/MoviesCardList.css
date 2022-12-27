@@ -18,7 +18,43 @@
     justify-content: center;
 }
 
+.movie-list__button {
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+    background: #F9F9F9;
+    border-radius: 6px;
+    text-align: center;
+    width: 100%;
+    height: 36px;
+    transition: opacity .4s ease-in-out;
+    cursor: pointer;
+    font-weight: 550;
+    font-size: 12px;
+    line-height: 15px;
+    box-sizing: border-box;
+    max-width: 1140px;
+    box-sizing: border-box;
+    margin: 50px 70px 80px;
+}
+
+.movie-list__button:focus,
+:active {
+    outline: none;
+    border: none;
+}
+
+.movie-list__button:hover {
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 892px) {
+
+    .movie-list__button {
+        margin: 50px auto 80px;
+        width: 708px;
+    }
+
     .movie-list__elements {
         grid-template-columns: repeat(2, 339px);
         grid-template-rows: repeat(auto-fill, 258px);
@@ -28,6 +64,12 @@
 }
 
 @media screen and (max-width: 740px) {
+
+    .movie-list__button {
+        margin: 50px auto 80px;
+        width: 300px;
+    }
+
     .movie-list {
         padding: 40px 10px 30px;
     }

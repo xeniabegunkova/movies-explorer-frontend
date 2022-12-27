@@ -10,7 +10,7 @@ function SavedMovies() {
             <>
                 <Header />
                 <SearchForm />
-                <MoviesCardList moviesConstants={moviesSaveConstants} />
+                <MoviesCardList />
                 <div className="saved-movies"></div>
                 <Footer />
             </>

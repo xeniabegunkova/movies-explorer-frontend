@@ -54,5 +54,5 @@ function SearchForm(props) {
 
 export default SearchForm;
 
-////http://codeharmony.ru/materials/42 - инфа о кнопке, как в айфоне
+//http://codeharmony.ru/materials/42 - инфа о кнопке, как в айфоне
 //https://ftask.ru/2017/04/24/%D1%81%D0%BA%D1%80%D1%8B%D1%82%D1%8C-%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%B8%D0%BA-%D0%B2-input-%D0%B2-crome-ie/ - убрать крестик у инпута

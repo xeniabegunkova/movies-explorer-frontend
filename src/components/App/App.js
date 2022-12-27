@@ -11,6 +11,7 @@ import { CurrentMoviesContext } from '../../contexts/CurrentMoviesContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { getMovieList } from '../../utils/MoviesApi';
 import MainApi from '../../utils/MainApi';
+import MoviesApi from '../../utils/MoviesApi';
 import * as auth from '../../utils/auth';
 
 import './App.css';
@@ -25,20 +26,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  function getData() {
-    getMovieList()
-      .then((data) => {
-        console.log(data)
-      })
-
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-  getData() 
-
-
-
   useEffect(() => {
     loggedIn && Promise.all([
       MainApi.getUserData(),
@@ -46,7 +33,6 @@ function App() {
       MainApi.getSavedMovies(),
     ])
       .then(([res, movies]) => {
-        console.log(res)
         setCurrentUser({
           name: res.data.name,
           email: res.data.email,
@@ -74,17 +60,6 @@ function App() {
     }
   }, [])
 
-  function handleUpdateUser({name, email}) {
-    MainApi.setUserData(name, email)
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }
-
-
   function handleRegistration(name, email, password) {
     auth.register(name, email, password)
       .then((data) => {
@@ -111,12 +86,6 @@ function App() {
       })
   }
 
-  function handleLogOut() {
-    localStorage.removeItem('jwt');
-    setLoggedIn(false);
-    navigate.push('/signin');
-  }
-
   return (
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
@@ -136,7 +105,7 @@ function App() {
           </Routes>
 
           <Routes>
-            <Route exact path="/movies" element={<Movies loggedIn={loggedIn} getData={getData}/>} />
+            <Route exact path="/movies" element={<Movies loggedIn={loggedIn} />} />
           </Routes>
 
           <Routes>
@@ -144,7 +113,7 @@ function App() {
           </Routes>
 
           <Routes>
-            <Route exact path="/profile" element={<Profile onLogOut={handleLogOut} onUpdateUser={handleUpdateUser}/>} />
+            <Route exact path="/profile" element={<Profile setCurrentUser={setCurrentUser} />} />
           </Routes>
 
           <Routes>

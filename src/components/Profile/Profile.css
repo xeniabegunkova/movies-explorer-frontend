@@ -83,12 +83,21 @@
     opacity: 0.6;
 }
 
+.profile__button_unactive{
+    cursor: auto;
+    opacity: 0.8;
+}
+
+.profile__button_unactive:hover {
+    opacity: 0.8;
+}
+
 .profile__button_logout {
     text-decoration: none;
     color: #FF004D;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1169px) {
     .profile {
         width: 768px;
         padding-bottom: 268px;
@@ -105,7 +114,7 @@
     
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 714px) {
     .profile {
         width: 320px;
         padding-bottom: 40px;

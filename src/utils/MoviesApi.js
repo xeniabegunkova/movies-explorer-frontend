@@ -1,29 +1,21 @@
-const moviesApi = 'https://api.nomoreparties.co/beatfilm-movies';
+const moviesApiUrl = 'https://api.nomoreparties.co/beatfilm-movies';
 
 //answer from server
 
-const getResponse = (response) => {
+export async function getMovieList() {
     try {
-        if (!response.ok) {
-            return Promise.reject(new Error(response.statusText));
-        }
-        return response.json();
+        let res = await fetch(moviesApiUrl, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        });
+        const response = await res.json();
+        return response;
     } catch (error) {
-        return error
+        console.log(error);
     }
-}
-
-//get movie list from server of films
-export const getMovieList = async () => {
-    console.log(getMovieList);
-    const response = await fetch(moviesApi, {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-    });
-    return await getResponse(response);
 }
 
 //https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch
