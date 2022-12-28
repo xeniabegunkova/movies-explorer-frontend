@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import './SearchForm.css'
-//import btn from '../../images/checkboxBtn.svg';
 import { getMovieList } from '../../utils/MoviesApi';
 
 function SearchForm({ setSearchMovies }) {

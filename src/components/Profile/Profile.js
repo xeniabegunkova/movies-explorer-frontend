@@ -6,7 +6,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MainApi from '../../utils/MainApi';
 
-function Profile({ setCurrentUser }) {
+function Profile({ setCurrentUser, handleLogOut }) {
 
     const currentUser = useContext(CurrentUserContext);
 
@@ -21,7 +21,6 @@ function Profile({ setCurrentUser }) {
     }, [currentUser]);
 
     const handleChange = (e) => {
-        e.preventDefault();
         const { name, value } = e.target;
         setUserData((prev) => ({ ...prev, [name]: value }));
         
@@ -30,18 +29,12 @@ function Profile({ setCurrentUser }) {
     function userDataChange(data) {
         MainApi.updateUserData(data.name, data.email)
             .then((data) => {
+                localStorage.getItem('jwt', data.token)
                 setCurrentUser(data.data);
-                console.log(data)
             })
             .catch((err) => {
                 console.log(err);
             })
-    }
-
-    function handleLogOut(e) {
-        e.preventDefault();
-        localStorage.removeItem('jwt');
-        navigate('/');
     }
 
     return (

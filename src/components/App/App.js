@@ -22,6 +22,9 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [email, setEmail] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const location = window.location.pathname;
+  const [name, setName] = useState('');
+  const [id, setId] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,6 +42,7 @@ function App() {
 
         setMovies(movies);
       })
+
       .catch((err) => {
         console.log(err);
       })
@@ -48,8 +52,10 @@ function App() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       auth.checkToken(jwt)
-        .then((res) => {
-          setEmail(res.data.email);
+        .then((data) => {
+          setEmail(data.data.email);
+          setName(data.data.name);
+          setId(data.data._id);
           setLoggedIn(true);
         })
         .catch((err) => {
@@ -58,13 +64,27 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then((data) => {
+          console.log(data)
+          setEmail(data.data.email);
+          setName(data.data.name);
+          setId(data.data._id);
+          setLoggedIn(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  }, [navigate.location])
+
   function handleRegistration(name, email, password) {
     auth.register(name, email, password)
       .then((data) => {
-        console.log(data)
-        if (data) {
-          navigate('/movies');
-        }
+        handleLogin(email, password);
       })
       .catch((err) => {
         console.log(err);
@@ -74,7 +94,7 @@ function App() {
   function handleLogin(email, password) {
     auth.login(email, password)
       .then((data) => {
-        if (data.token) {
+        if (data) {
           localStorage.setItem('jwt', data.token);
           setLoggedIn(true);
           navigate('/movies');
@@ -84,6 +104,12 @@ function App() {
         console.log(err);
       })
   }
+
+  function handleLogOut() {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    setCurrentUser({});
+}
 
   return (
     <div className="App">
@@ -100,7 +126,7 @@ function App() {
           </Routes>
 
           <Routes>
-            <Route exact path="/signup" element={<Register handleRegistration={handleRegistration}/>} />
+            <Route exact path="/signup" element={<Register handleRegistration={handleRegistration} />} />
           </Routes>
 
           <Routes>
@@ -108,11 +134,11 @@ function App() {
           </Routes>
 
           <Routes>
-            <Route exact path="/saved-movies" element={<SavedMovies loggedIn={loggedIn}/>} />
+            <Route exact path="/saved-movies" element={<SavedMovies loggedIn={loggedIn} />} />
           </Routes>
 
           <Routes>
-            <Route exact path="/profile" element={<Profile setCurrentUser={setCurrentUser} />} />
+            <Route exact path="/profile" element={<Profile setCurrentUser={setCurrentUser} name={name} email={email} id={id} handleLogOut={handleLogOut} />} />
           </Routes>
 
           <Routes>

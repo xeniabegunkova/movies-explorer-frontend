@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
-import { getMovieList } from '../../utils/MoviesApi';
 import MoreButton from "../MoreButton/MoreButton";
 import {
     SCREENWIDTH_1280,
