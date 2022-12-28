@@ -24,6 +24,7 @@ function Profile({ setCurrentUser }) {
         e.preventDefault();
         const { name, value } = e.target;
         setUserData((prev) => ({ ...prev, [name]: value }));
+        
     };
 
     function userDataChange(data) {
@@ -60,6 +61,7 @@ function Profile({ setCurrentUser }) {
                             onChange={handleChange}
                         ></input>
                     </label>
+
                     <label className="profile__label">E-mail
                         <input
                             className="profile__input"
@@ -69,6 +71,7 @@ function Profile({ setCurrentUser }) {
                             onChange={handleChange}
                         ></input>
                     </label>
+
                 </form>
                 <button
                     className={userData.name !== currentUser.name || userData.email !== currentUser.email ? 'profile__button' : "profile__button profile__button_unactive"}

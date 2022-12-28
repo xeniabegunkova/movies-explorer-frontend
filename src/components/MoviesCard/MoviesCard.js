@@ -17,6 +17,10 @@ function MoviesCard(movie) {
         })
     }
 
+    const handleDelete = (id) => {
+        MainApi.deleteMovie(id)
+    }
+
     const saveMovie = (
         `movie-card__save ${isSave ? 'movie-card__save-active' : ''}`
     )
@@ -35,7 +39,6 @@ function MoviesCard(movie) {
                 <img
                     className="movie-card__img"
                     src={'https://api.nomoreparties.co' + image.url}
-                    target={'_blank'}
                     alt={nameRU} />
             </a>
             <div className="movie-card__information">

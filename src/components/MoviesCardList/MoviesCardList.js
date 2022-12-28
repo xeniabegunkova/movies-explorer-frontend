@@ -3,51 +3,35 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
 import { getMovieList } from '../../utils/MoviesApi';
 import MoreButton from "../MoreButton/MoreButton";
+import {
+    SCREENWIDTH_1280,
+    SCREENWIDTH_768,
+    NUMBEROFCELLS_1280,
+    NUMBEROFCELLS_600,
+    NUMBEROFCELLS_768,
+    NUMBEROFCELLSINAROW_1280,
+    NUMBEROFCELLSINAROW_768
+} from '../../utils/constants'
 
-function MoviesCardList() {
+function MoviesCardList({ searchMovies = [] }) {
+    console.log(searchMovies)
 
-    const [data, setData] = useState([]);
     const [size, setSize] = useState(window.innerWidth);
     const [moviesCounter, setMoviesCounter] = useState();
     const [more, setMore] = useState();
 
-    //width of screen
-
-    const screenWidth_1280 = 1280;
-    const screenWidth_768 = 600;
-
-    //num of cells
-
-    const numberOfCells_1280 = 12;
-    const numberOfCells_768 = 8;
-    const numberOfCells_600 = 5;
-
-    //num of cells in a row
-
-    const numberOfCellsInARow_1280 = 3;
-    const numberOfCellsInARow_768 = 2;
-
-    useEffect(() => {
-        getMovieList()
-            .then((response) => {
-                if (response) {
-                    setData(response)
-                }
-            })
-    }, [])
-
     useEffect(() => {
         const width = () => setSize(window.innerWidth);
         window.addEventListener('resize', width);
-        if (size > screenWidth_1280) {
-            setMoviesCounter(numberOfCells_1280);
-            setMore(numberOfCellsInARow_1280)
-        } else if (size > screenWidth_768) {
-            setMoviesCounter(numberOfCells_768);
-            setMore(numberOfCellsInARow_768);
+        if (size > SCREENWIDTH_1280) {
+            setMoviesCounter(NUMBEROFCELLS_1280);
+            setMore(NUMBEROFCELLSINAROW_1280)
+        } else if (size > SCREENWIDTH_768) {
+            setMoviesCounter(NUMBEROFCELLS_768);
+            setMore(NUMBEROFCELLSINAROW_768);
         } else {
-            setMoviesCounter(numberOfCells_600);
-            setMore(numberOfCellsInARow_768);
+            setMoviesCounter(NUMBEROFCELLS_600);
+            setMore(NUMBEROFCELLSINAROW_768);
         }
         return () => window.removeEventListener('resize', width)
     }, [size]);
@@ -57,10 +41,10 @@ function MoviesCardList() {
             <section className='movie-list'>
                 <ul className='movie-list__elements'>
                     {
-                        data.slice(0, moviesCounter).map((movie) => {
+                        searchMovies.slice(0, moviesCounter).map((movie, idx) => {
                             return (
                                 <MoviesCard
-                                    key={movie.id}
+                                    key={idx}
                                     nameRU={movie.nameRU}
                                     image={movie.image}
                                     trailerLink={movie.trailerLink}
@@ -71,7 +55,7 @@ function MoviesCardList() {
                         )}
                 </ul>
             </section>
-            {data.length > moviesCounter ?
+            {searchMovies.length > moviesCounter ?
                 <MoreButton onClick={() => setMoviesCounter(moviesCounter + more)} /> : ''
             }
         </>

@@ -1,44 +1,58 @@
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 import './SearchForm.css'
 //import btn from '../../images/checkboxBtn.svg';
+import { getMovieList } from '../../utils/MoviesApi';
 
-function SearchForm(props) {
-    const [movies, setMovies] = useState('');
+function SearchForm({ setSearchMovies }) {
+    const [searchText, setSearchText] = useState('');
     const [error, setError] = useState('');
+    const [movies, setMovies] = useState();
 
-    const handleMovies = (e) => {
-        setMovies(e.target.value)
-        if (e.target.value) {
-            setError('')
-        }
-    }
+    useEffect(() => {
+        getMovieList()
+            .then((response) => {
+                if (response) {
+                    setMovies(response)
+                }
+            })
+    }, [])
 
     function handleSubmit(e) {
-        // Запрещаем браузеру переходить по адресу формы
         e.preventDefault();
-        if (movies === '') {
+        if (searchText === '') {
             setError('Нужно ввести ключевое слово')
-        } else {
-            props.getData(movies)
         }
-        // Передаём значения управляемых компонентов во внешний обработчик
+        const filteredMovies = movies.filter(movie =>
+            movie
+                .nameRU
+                .toLowerCase()
+                .includes(searchText.toLowerCase()) ||
+            movie
+                .nameEN
+                .toLowerCase()
+                .includes(searchText.toLowerCase())
+        )
+        const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
+        const newSearchedMovies = filteredMovies.concat(alreadySearchedMovies);
+        localStorage.setItem('searchedMovies', JSON.stringify(newSearchedMovies));
+        setSearchMovies(newSearchedMovies);
     }
 
 
     return (
         <section className="search">
             <form className="search__form" onSubmit={handleSubmit} noValidate>
-                <input 
-                type="search" 
-                className="search__input" 
-                placeholder="Фильм"
-                onChange={e => handleMovies(e)}
-                value={movies} 
-                required />
+                <input
+                    type="search"
+                    className="search__input"
+                    placeholder="Фильм"
+                    onChange={e => setSearchText(e.target.value)}
+                    value={searchText}
+                    required />
                 <button className="search__button" type="submit">
                 </button>
             </form>
-
+            <div>{error}</div>
             <div className='check'>
                 <label className="checkbox">
                     <input className="checkbox__input" type="checkbox" />

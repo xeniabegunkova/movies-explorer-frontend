@@ -9,9 +9,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import { CurrentMoviesContext } from '../../contexts/CurrentMoviesContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { getMovieList } from '../../utils/MoviesApi';
 import MainApi from '../../utils/MainApi';
-import MoviesApi from '../../utils/MoviesApi';
 import * as auth from '../../utils/auth';
 
 import './App.css';
@@ -63,6 +61,7 @@ function App() {
   function handleRegistration(name, email, password) {
     auth.register(name, email, password)
       .then((data) => {
+        console.log(data)
         if (data) {
           navigate('/movies');
         }

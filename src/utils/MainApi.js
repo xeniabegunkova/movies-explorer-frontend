@@ -74,16 +74,6 @@ class Api {
         })
             .then(this._getJsonOrError)
     }
-
-    //Like
-    
-    /*changeLikeCardStatus(id, isLiked) {
-        return fetch(`${this._url}/cards/${id}/likes`, {
-            method: isLiked ? 'PUT' : 'DELETE',
-            headers: this._getHeaders(), 
-        })
-            .then(this._getJsonOrError)
-    }*/
 }
 
 const api = new Api('https://api.movies.ks.nomoredomains.club')
