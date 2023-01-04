@@ -15,31 +15,9 @@ import {
 
 function MoviesCardList({ searchMovies = [] }) {
 
-    //проверка фильмов на сохранение через проход по массиву
-    /*function getSavedMovieCard(movie) {
-        return moviesSaved.find(savedMovie => savedMovie.id === movie.id)
-    };*/
-
     const [size, setSize] = useState(window.innerWidth);
     const [moviesCounter, setMoviesCounter] = useState();
     const [more, setMore] = useState();
-    const [savedMovie, setSavedMovie] = useState([]);
-
-    useEffect(() => {
-        MainApi.getSavedMovies()
-            .then(data => {
-                setSavedMovie(data.data)
-                console.log(data)
-            })
-    }, []);
-
-    const checkMovieId = (savedMovies, movie) => {
-
-        return savedMovies.find((data) => {
-            return data.movieId === movie.id
-        });
-    }
-
 
     useEffect(() => {
         const width = () => setSize(window.innerWidth);
@@ -71,7 +49,6 @@ function MoviesCardList({ searchMovies = [] }) {
                                     image={movie.image}
                                     trailerLink={movie.trailerLink}
                                     duration={movie.duration}
-                                    isSaved={checkMovieId(savedMovie, movie)}
                                 />
                             )
                         }

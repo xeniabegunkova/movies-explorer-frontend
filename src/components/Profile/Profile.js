@@ -11,7 +11,6 @@ function Profile({ setCurrentUser, handleLogOut }) {
     const currentUser = useContext(CurrentUserContext);
 
     const [userData, setUserData] = useState({ name: '', email: '' });
-    const navigate = useNavigate();
 
     useEffect(() => {
         setUserData({
