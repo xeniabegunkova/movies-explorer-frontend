@@ -1,11 +1,12 @@
 import Header from "../Header/Header";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { moviesSaveConstants } from '../../utils/movieConstants';
 import Footer from '../Footer/Footer';
 import './SavedMovies.css';
+import { useState } from "react";
 
 function SavedMovies() {
+
         return (
             <>
                 <Header />

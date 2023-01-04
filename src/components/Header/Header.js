@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Header(props) {
     return (
-        <header className={"header " + (props.loggedIn ? 'header_pink' : '')}>
+        <header className={props.loggedIn ? 'header header_pink' : 'header'}>
             <Link to="/" className="header__link">
                 <img
                     src={logo}
@@ -14,7 +14,7 @@ function Header(props) {
                     className="header__logo"
                 />
             </Link>
-            <Navigation loggedIn={props.loggedIn} />
+            <Navigation />
         </header>
     )
 }

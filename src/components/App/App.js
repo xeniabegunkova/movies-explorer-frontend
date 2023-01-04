@@ -22,7 +22,6 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [email, setEmail] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
-  const location = window.location.pathname;
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const navigate = useNavigate();
@@ -69,7 +68,6 @@ function App() {
     if (jwt) {
       auth.checkToken(jwt)
         .then((data) => {
-          console.log(data)
           setEmail(data.data.email);
           setName(data.data.name);
           setId(data.data._id);
@@ -107,11 +105,11 @@ function App() {
 
   function handleLogOut() {
     localStorage.removeItem('jwt');
-    localStorage.removeItem('searchedMovies')
+    localStorage.removeItem('searchedMovies');
     setLoggedIn(false);
     setCurrentUser({});
     setMovies([]);
-}
+  }
 
   return (
     <div className="App">

@@ -92,12 +92,13 @@
         background-repeat: no-repeat;
         background-position-y: 15px;
         cursor: pointer;
-        background-color: #FFFFFF;
+        background-color: transparent;
         position: relative;
     }
 
     .navigation__menu-open {
         background-image: url('../../../images/closeIcon.svg');
+        background-color: #FFFFFF;
         background-position-x: 466px;
         background-position-y: 22.4px;
         margin: 0;
@@ -206,7 +207,6 @@
         width: 254px;
         background-size: 40px 43px;
         cursor: pointer;
-        background-color: #FFFFFF;
         position: relative;
     }
 

@@ -2,10 +2,10 @@ import NavigationFilms from "./NavigationFilms/NavigationFilms";
 import NavigationMain from "./NavigationMain/NavigationMain";
 import './Navigation.css'
 
-function Navigation(props) {
+function Navigation() {
     return (
         <section className="nav">
-            {props.loggedIn ? <NavigationMain /> : <NavigationFilms />}
+            {!localStorage.getItem('jwt') ? <NavigationMain /> : <NavigationFilms />}
         </section>
     )
 }

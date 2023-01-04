@@ -1,24 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import MainApi from '../../utils/MainApi'
 
-function MoviesCard(movie) {
+function MoviesCard({ movie }) {
 
     const { nameRU, image, duration, trailerLink } = movie;
 
     const [isSave, setIsSave] = useState(false);
 
-    const handleSave = (movie) => {
-        setIsSave(!isSave);
-        MainApi.addMoviesToSave(movie)
-        .then((data) => {
-            console.log(data)
-        })
-    }
+    const location = useLocation();
 
-    const handleDelete = (id) => {
-        MainApi.deleteMovie(id)
+
+    const handleSave = () => {
+        setIsSave(!isSave);
+        console.log(movie)
+        MainApi.addMoviesToSave(movie)
+            .then((savedMovie) => {
+                console.log(savedMovie)
+            })
     }
 
     const saveMovie = (
@@ -31,14 +31,14 @@ function MoviesCard(movie) {
         return hours + 'ч ' + minutes + 'м';
     };
 
-    const location = useLocation();
-
     return (
         <li className="movie-card">
             <a className='movie-card__link' href={trailerLink}>
                 <img
                     className="movie-card__img"
                     src={'https://api.nomoreparties.co' + image.url}
+                    rel="noreferrer"
+                    target="_blank"
                     alt={nameRU} />
             </a>
             <div className="movie-card__information">

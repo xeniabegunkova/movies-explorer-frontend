@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import './NavigationMain.css';
 
-function NavigationMain() {
+function NavigationMain() { 
     return (
-        <div className='navigation-auth'>
             <nav className='navigation-auth__main'>
                 <NavLink to="/signup" className='navigation-auth__main-name'>
                     Регистрация
@@ -12,7 +11,6 @@ function NavigationMain() {
                     Войти
                 </NavLink>
             </nav>
-        </div>
     )
 }
 

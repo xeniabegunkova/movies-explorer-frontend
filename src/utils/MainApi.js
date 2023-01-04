@@ -60,7 +60,19 @@ class Api {
         return fetch(`${this._url}/movies`, {
             method: 'POST',
             headers: this._getHeaders(),
-            body: JSON.stringify(data),
+            body: JSON.stringify({
+                country: data.country,
+                director: data.director,
+                duration: data.duration.toString(),
+                year: data.year,
+                description: data.description,
+                image: 'https://api.nomoreparties.co' + data.image.url,
+                trailerLink: data.trailerLink,
+                thumbnail: 'https://api.nomoreparties.co' + data.image.formats.thumbnail.url,
+                nameRU: data.nameRU,
+                nameEN: data.nameEN,
+                movieId: data.id.toString(),
+            }),
         })
             .then(this._getJsonOrError)
     }

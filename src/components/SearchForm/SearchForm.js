@@ -37,7 +37,6 @@ function SearchForm({ setSearchMovies }) {
         setSearchMovies(newSearchedMovies);
     }
 
-
     return (
         <section className="search">
             <form className="search__form" onSubmit={handleSubmit} noValidate>

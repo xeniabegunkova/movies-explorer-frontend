@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import MainApi from '../../utils/MainApi'
 import './MoviesCardList.css';
 import MoreButton from "../MoreButton/MoreButton";
 import {
@@ -13,11 +14,32 @@ import {
 } from '../../utils/constants'
 
 function MoviesCardList({ searchMovies = [] }) {
-    console.log(searchMovies)
+
+    //проверка фильмов на сохранение через проход по массиву
+    /*function getSavedMovieCard(movie) {
+        return moviesSaved.find(savedMovie => savedMovie.id === movie.id)
+    };*/
 
     const [size, setSize] = useState(window.innerWidth);
     const [moviesCounter, setMoviesCounter] = useState();
     const [more, setMore] = useState();
+    const [savedMovie, setSavedMovie] = useState([]);
+
+    useEffect(() => {
+        MainApi.getSavedMovies()
+            .then(data => {
+                setSavedMovie(data.data)
+                console.log(data)
+            })
+    }, []);
+
+    const checkMovieId = (savedMovies, movie) => {
+
+        return savedMovies.find((data) => {
+            return data.movieId === movie.id
+        });
+    }
+
 
     useEffect(() => {
         const width = () => setSize(window.innerWidth);
@@ -40,14 +62,16 @@ function MoviesCardList({ searchMovies = [] }) {
             <section className='movie-list'>
                 <ul className='movie-list__elements'>
                     {
-                        searchMovies.slice(0, moviesCounter).map((movie, idx) => {
+                        searchMovies.slice(0, moviesCounter).map((movie) => {
                             return (
                                 <MoviesCard
-                                    key={idx}
+                                    key={movie.id}
+                                    movie={movie}
                                     nameRU={movie.nameRU}
                                     image={movie.image}
                                     trailerLink={movie.trailerLink}
                                     duration={movie.duration}
+                                    isSaved={checkMovieId(savedMovie, movie)}
                                 />
                             )
                         }
