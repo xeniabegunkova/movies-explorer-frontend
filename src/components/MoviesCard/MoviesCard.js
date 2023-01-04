@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import MainApi from '../../utils/MainApi'
@@ -11,13 +11,15 @@ function MoviesCard({ movie }) {
 
     const location = useLocation();
 
-
     const handleSave = () => {
         setIsSave(!isSave);
         console.log(movie)
         MainApi.addMoviesToSave(movie)
             .then((savedMovie) => {
                 console.log(savedMovie)
+            })
+            .catch((err) => {
+                console.log(err)
             })
     }
 
@@ -33,10 +35,15 @@ function MoviesCard({ movie }) {
 
     return (
         <li className="movie-card">
-            <a className='movie-card__link' href={trailerLink}>
+            <a className='movie-card__link'
+                href={trailerLink}
+                rel="noreferrer"
+                target="_blank"
+            >
                 <img
                     className="movie-card__img"
-                    src={'https://api.nomoreparties.co' + image.url}
+                    src={location.pathname === '/movies' ?
+                        'https://api.nomoreparties.co' + image.url : movie.image}
                     rel="noreferrer"
                     target="_blank"
                     alt={nameRU} />
