@@ -32,10 +32,13 @@ function MoviesCardListSaved() {
     }, [location.pathname]);
 
     const handleDelete = (movie) => {
+        console.log(movie)
+        console.log(savedMovie)
         MainApi.deleteMovie(movie._id)
             .then((data) => {
-                const newMass = savedMovie.filter(e => e._id !== data._id)
-                setSavedMovie(newMass)
+                const newArray = savedMovie.filter(e => e._id !== data._id)
+                localStorage.setItem('savedMovies', JSON.stringify(newArray))
+                setSavedMovie(newArray)
             })
             .catch((err) => {
                 console.log(err)

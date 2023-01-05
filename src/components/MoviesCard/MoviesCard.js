@@ -1,3 +1,5 @@
+//https://reactrouter.com/en/main/hooks/use-location
+
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
@@ -10,6 +12,18 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
     const [isSave, setIsSave] = useState(false);
 
     const location = useLocation();
+
+    useEffect(() => {
+        experemental()
+    }, [])
+
+    function experemental() {
+        JSON.parse(localStorage.getItem('savedMovies')).forEach(e => {
+            if (e.nameRU === movie.nameRU) {
+                setIsSave(!isSave)
+            }
+        });
+    }
 
     const handleSave = () => {
         MainApi.addMoviesToSave(movie)
@@ -29,10 +43,6 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
     const handle = () => {
         handleDelete(movie)
     }
-
-    const saveMovie = (
-        `movie-card__save ${isSave ? 'movie-card__save-active' : ''}`
-    )
 
     function getTimeFromMins(mins) {
         let hours = Math.trunc(mins / 60);
@@ -59,7 +69,10 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
                 <div className="movie-card__info">
                     <h2 className="movie-card__title">{nameRU}</h2>
                     {location.pathname === '/movies' ?
-                        <button className={saveMovie} type='button' onClick={handleSave} />
+                        <button
+                            className={`movie-card__save ${isSave ? 'movie-card__save-active' : ''}`}
+                            type='button'
+                            onClick={isSave ? handle : handleSave} />
                         :
                         <button className='movie-card__remove' type='button' onClick={handle} />
                     }
@@ -71,5 +84,3 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
 }
 
 export default MoviesCard;
-
-//https://reactrouter.com/en/main/hooks/use-location

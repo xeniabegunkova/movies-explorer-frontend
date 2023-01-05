@@ -19,6 +19,19 @@ function MoviesCardList({ searchMovies = [] }) {
     const [moviesCounter, setMoviesCounter] = useState();
     const [more, setMore] = useState();
 
+    function experemental() {
+        let array = []
+        MainApi.getSavedMovies()
+            .then((data) => {
+                array = data.data
+                localStorage.setItem('savedMovies',JSON.stringify(array))
+            })
+    }
+
+    useEffect(() => {
+        experemental()
+    }, [])
+
     useEffect(() => {
         const width = () => setSize(window.innerWidth);
         window.addEventListener('resize', width);
@@ -34,7 +47,7 @@ function MoviesCardList({ searchMovies = [] }) {
         }
         return () => window.removeEventListener('resize', width)
     }, [size]);
-    
+
     return (
         <>
             <section className='movie-list'>
