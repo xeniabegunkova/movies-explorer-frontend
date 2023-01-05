@@ -34,7 +34,7 @@ function MoviesCardList({ searchMovies = [] }) {
         }
         return () => window.removeEventListener('resize', width)
     }, [size]);
-
+    
     return (
         <>
             <section className='movie-list'>

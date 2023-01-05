@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import MainApi from '../../utils/MainApi'
 
-function MoviesCard({ movie }) {
+function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
 
     const { nameRU, image, duration, trailerLink } = movie;
 
@@ -12,15 +12,22 @@ function MoviesCard({ movie }) {
     const location = useLocation();
 
     const handleSave = () => {
-        setIsSave(!isSave);
-        console.log(movie)
         MainApi.addMoviesToSave(movie)
-            .then((savedMovie) => {
-                console.log(savedMovie)
+            .then((data) => {
+                searchMovies.forEach((item) => {
+                    if (data.id === item.id) {
+                        console.log(movie)
+                    }
+                })
+                setIsSave(!isSave);
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
+
+    const handle = () => {
+        handleDelete(movie)
     }
 
     const saveMovie = (
@@ -54,7 +61,7 @@ function MoviesCard({ movie }) {
                     {location.pathname === '/movies' ?
                         <button className={saveMovie} type='button' onClick={handleSave} />
                         :
-                        <button className='movie-card__remove' type='button' />
+                        <button className='movie-card__remove' type='button' onClick={handle} />
                     }
                 </div>
                 <p className="movie-card__duration">{getTimeFromMins(duration)}</p>

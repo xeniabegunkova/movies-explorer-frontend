@@ -111,6 +111,16 @@
     cursor: pointer;
 }
 
+.movie-card__link {
+    text-decoration: none;
+    border: none;
+}
+
+.movie-card__link:focus,
+:active {
+    outline: none;
+    border: none;
+}
 
 @media screen and (max-width: 892px) {
     .movie-card {

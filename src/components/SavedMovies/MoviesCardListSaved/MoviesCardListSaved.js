@@ -15,16 +15,14 @@ function MoviesCardListSaved() {
         if (location.pathname === '/saved-movies') {
             MainApi.getSavedMovies(localStorage.getItem('jwt'))
                 .then((data) => {
-                    let array = data.data
-                    localStorage.setItem('savedMovies', JSON.stringify(array))
-                    setSavedMovie(JSON.parse((localStorage.getItem('savedMovies'))))
-                    console.log(JSON.parse((localStorage.getItem('savedMovies'))))
-                    console.log(savedMovie)
-                    setLoad(true)
+                    let savedMoviesArray = data.data;
+                    localStorage.setItem('savedMovies', JSON.stringify(savedMoviesArray));
+                    setSavedMovie(JSON.parse((localStorage.getItem('savedMovies'))));
+                    setLoad(true);
                 })
                 .catch((err) => {
-                    setError('Во время запроса произошла ошибка')
-                    console.log(err)
+                    setError('Во время запроса произошла ошибка');
+                    console.log(err);
                 })
         }
     }
@@ -33,18 +31,22 @@ function MoviesCardListSaved() {
         saveMovie()
     }, [location.pathname]);
 
-    const checkMovieId = (savedMovies, movie) => {
-
-        return savedMovies.find((data) => {
-            return data.movieId === movie.id
-        });
+    const handleDelete = (movie) => {
+        MainApi.deleteMovie(movie._id)
+            .then((data) => {
+                const newMass = savedMovie.filter(e => e._id !== data._id)
+                setSavedMovie(newMass)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     return (
         <>
             <section className='movie-list'>
                 <ul className='movie-list__elements'>
-                    { load ? savedMovie
+                    {load ? savedMovie
                         .map((movie, idx) => {
                             return (
                                 <MoviesCard
@@ -55,8 +57,8 @@ function MoviesCardListSaved() {
                                     image={movie.image}
                                     trailerLink={movie.trailerLink}
                                     duration={movie.duration}
-                                    isSaved={checkMovieId(savedMovie, movie)}
-                                    error={setError}
+                                    error={error}
+                                    handleDelete={handleDelete}
                                 />
                             )
                         }
