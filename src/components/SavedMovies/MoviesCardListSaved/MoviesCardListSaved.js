@@ -4,7 +4,7 @@ import MainApi from "../../../utils/MainApi"
 import { useLocation } from "react-router-dom";
 import Preloader from "../../Preloader/Preloader"
 
-function MoviesCardListSaved() {
+function MoviesCardListSaved({ searchMovies = [] }) {
 
     const [savedMovie, setSavedMovie] = useState([]);
     const [error, setError] = useState('');
@@ -31,12 +31,12 @@ function MoviesCardListSaved() {
         saveMovie()
     }, [location.pathname]);
 
+
     const handleDelete = (movie) => {
-        console.log(movie)
-        console.log(savedMovie)
         MainApi.deleteMovie(movie._id)
             .then((data) => {
                 const newArray = savedMovie.filter(e => e._id !== data._id)
+                console.log(newArray)
                 localStorage.setItem('savedMovies', JSON.stringify(newArray))
                 setSavedMovie(newArray)
             })

@@ -13,9 +13,7 @@ import {
     NUMBEROFCELLSINAROW_768
 } from '../../utils/constants'
 
-function MoviesCardList({ searchMovies = [], handleDelete }) {
-
-    console.log(handleDelete)
+function MoviesCardList({ searchMovies = [], setSearchMovies }) {
 
     const [size, setSize] = useState(window.innerWidth);
     const [moviesCounter, setMoviesCounter] = useState();
@@ -27,7 +25,7 @@ function MoviesCardList({ searchMovies = [], handleDelete }) {
         MainApi.getSavedMovies()
             .then((data) => {
                 array = data.data
-                localStorage.setItem('savedMovies',JSON.stringify(array))
+                localStorage.setItem('savedMovies', JSON.stringify(array))
             })
     }
 
@@ -35,10 +33,6 @@ function MoviesCardList({ searchMovies = [], handleDelete }) {
         checkSaveMovie()
     }, [])
 
-    function handleDeleteMovie() {
-        console.log(handleDelete)
-        handleDelete()
-    }
 
     useEffect(() => {
         const width = () => setSize(window.innerWidth);
@@ -56,6 +50,20 @@ function MoviesCardList({ searchMovies = [], handleDelete }) {
         return () => window.removeEventListener('resize', width)
     }, [size]);
 
+    const handleDelete = (movie) => {
+        MainApi.deleteMovie(movie._id)
+            .then((data) => {
+                const newArray = savedMovie.filter(e => e._id !== data._id)
+                localStorage.setItem('savedMovies', JSON.stringify(newArray))
+                setSavedMovie(newArray)
+                setSearchMovies(JSON.parse((localStorage.getItem('searchedMovies'))))
+                console.log(setSearchMovies)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
     return (
         <>
             <section className='movie-list'>
@@ -64,13 +72,13 @@ function MoviesCardList({ searchMovies = [], handleDelete }) {
                         searchMovies.slice(0, moviesCounter).map((movie) => {
                             return (
                                 <MoviesCard
-                                    key={movie.id}
+                                    key={movie.id || movie.movieId}
                                     movie={movie}
                                     nameRU={movie.nameRU}
                                     image={movie.image}
                                     trailerLink={movie.trailerLink}
                                     duration={movie.duration}
-                                    handleDelete={handleDeleteMovie}
+                                    handleDelete={handleDelete}
                                 />
                             )
                         }

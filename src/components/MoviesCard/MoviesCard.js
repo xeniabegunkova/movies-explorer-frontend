@@ -5,9 +5,7 @@ import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import MainApi from '../../utils/MainApi'
 
-function MoviesCard({ movie, handleDelete, searchMovies = [], handleDeleteLike }) {
-
-    console.log(handleDelete)
+function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
 
     const { nameRU, image, duration, trailerLink } = movie;
 
@@ -19,7 +17,7 @@ function MoviesCard({ movie, handleDelete, searchMovies = [], handleDeleteLike }
         checkSaveMovie()
     }, [])
 
-    function checkSaveMovie() {
+    const checkSaveMovie = () => {
         JSON.parse(localStorage.getItem('savedMovies')).forEach(e => {
             if (e.nameRU === movie.nameRU) {
                 setIsSave(!isSave)
@@ -43,8 +41,18 @@ function MoviesCard({ movie, handleDelete, searchMovies = [], handleDeleteLike }
     }
 
     const handleDeleteMovie = () => {
-        console.log(handleDelete)
-        handleDelete(movie)
+        handleDelete(movie);
+        checkArray(movie);
+    }
+
+    const checkArray = () => {
+        JSON.parse(localStorage.getItem('savedMovies')).forEach((item) => {
+            if (movie.nameRU === item.nameRU) {
+                handleDelete(item)
+                console.log(item)
+                setIsSave(!isSave)
+            }
+        })
     }
 
     function getTimeFromMins(mins) {
@@ -75,7 +83,7 @@ function MoviesCard({ movie, handleDelete, searchMovies = [], handleDeleteLike }
                         <button
                             className={`movie-card__save ${isSave ? 'movie-card__save-active' : ''}`}
                             type='button'
-                            onClick={isSave ? handleDeleteMovie : handleSave} />
+                            onClick={isSave ? checkArray : handleSave} />
                         :
                         <button className='movie-card__remove' type='button' onClick={handleDeleteMovie} />
                     }
