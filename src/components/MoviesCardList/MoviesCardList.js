@@ -13,13 +13,16 @@ import {
     NUMBEROFCELLSINAROW_768
 } from '../../utils/constants'
 
-function MoviesCardList({ searchMovies = [] }) {
+function MoviesCardList({ searchMovies = [], handleDelete }) {
+
+    console.log(handleDelete)
 
     const [size, setSize] = useState(window.innerWidth);
     const [moviesCounter, setMoviesCounter] = useState();
     const [more, setMore] = useState();
+    const [savedMovie, setSavedMovie] = useState([]);
 
-    function experemental() {
+    function checkSaveMovie() {
         let array = []
         MainApi.getSavedMovies()
             .then((data) => {
@@ -29,8 +32,13 @@ function MoviesCardList({ searchMovies = [] }) {
     }
 
     useEffect(() => {
-        experemental()
+        checkSaveMovie()
     }, [])
+
+    function handleDeleteMovie() {
+        console.log(handleDelete)
+        handleDelete()
+    }
 
     useEffect(() => {
         const width = () => setSize(window.innerWidth);
@@ -62,6 +70,7 @@ function MoviesCardList({ searchMovies = [] }) {
                                     image={movie.image}
                                     trailerLink={movie.trailerLink}
                                     duration={movie.duration}
+                                    handleDelete={handleDeleteMovie}
                                 />
                             )
                         }

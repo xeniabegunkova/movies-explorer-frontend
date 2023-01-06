@@ -5,7 +5,9 @@ import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import MainApi from '../../utils/MainApi'
 
-function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
+function MoviesCard({ movie, handleDelete, searchMovies = [], handleDeleteLike }) {
+
+    console.log(handleDelete)
 
     const { nameRU, image, duration, trailerLink } = movie;
 
@@ -14,10 +16,10 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
     const location = useLocation();
 
     useEffect(() => {
-        experemental()
+        checkSaveMovie()
     }, [])
 
-    function experemental() {
+    function checkSaveMovie() {
         JSON.parse(localStorage.getItem('savedMovies')).forEach(e => {
             if (e.nameRU === movie.nameRU) {
                 setIsSave(!isSave)
@@ -40,7 +42,8 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
             })
     }
 
-    const handle = () => {
+    const handleDeleteMovie = () => {
+        console.log(handleDelete)
         handleDelete(movie)
     }
 
@@ -72,9 +75,9 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
                         <button
                             className={`movie-card__save ${isSave ? 'movie-card__save-active' : ''}`}
                             type='button'
-                            onClick={isSave ? handle : handleSave} />
+                            onClick={isSave ? handleDeleteMovie : handleSave} />
                         :
-                        <button className='movie-card__remove' type='button' onClick={handle} />
+                        <button className='movie-card__remove' type='button' onClick={handleDeleteMovie} />
                     }
                 </div>
                 <p className="movie-card__duration">{getTimeFromMins(duration)}</p>
