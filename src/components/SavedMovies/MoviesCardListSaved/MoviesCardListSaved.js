@@ -18,7 +18,7 @@ function MoviesCardListSaved({ savedMovies = [], setSavedMovies }) {
                     let savedMoviesArray = data.data;
                     console.log(savedMoviesArray)
                     localStorage.setItem('savedMovies', JSON.stringify(savedMoviesArray));
-                    setSavedMovie(JSON.parse((localStorage.getItem('savedMovies'))));
+                    setSavedMovie(JSON.parse((localStorage.getItem('savedMovies')))); // поменять
                     setLoad(true);
                 })
                 .catch((err) => {
