@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
 import './SearchForm.css'
 import { getMovieList } from '../../utils/MoviesApi';
+import { TIMEOFTHESHORTFILMS } from "../../utils/constants";
+import { useLocation } from 'react-router-dom';
 
-function SearchForm({ setSearchMovies }) {
+function SearchForm({ setHandleAddMovies }) {
     const [searchText, setSearchText] = useState('');
     const [error, setError] = useState('');
     const [movies, setMovies] = useState();
+    const [isError, setIsError] = useState(false);
+
+
+    const [checked, setChecked] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         getMovieList()
@@ -14,13 +21,21 @@ function SearchForm({ setSearchMovies }) {
                     setMovies(response)
                 }
             })
+        if (JSON.parse(localStorage.getItem('shortMovies'))) {
+            const searchFilms = JSON.parse(localStorage.getItem('searchedMovies'));
+            const filteredMovies = searchFilms.filter(movie => {
+                return movie.duration <= TIMEOFTHESHORTFILMS;
+            });
+            setHandleAddMovies(filteredMovies);
+        }
     }, [])
 
     function handleSubmit(e) {
         e.preventDefault();
         if (searchText === '') {
-            setError('Нужно ввести ключевое слово')
-        }
+            setError('Нужно ввести ключевое слово');
+            setIsError(true);
+        } else {
         const filteredMovies = movies.filter(movie =>
             movie
                 .nameRU
@@ -32,9 +47,44 @@ function SearchForm({ setSearchMovies }) {
                 .includes(searchText.toLowerCase())
         )
         const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
-        const newSearchedMovies = filteredMovies.concat(alreadySearchedMovies);
-        localStorage.setItem('searchedMovies', JSON.stringify(newSearchedMovies));
-        setSearchMovies(newSearchedMovies);
+
+        const newSearchedMovies = alreadySearchedMovies.concat(filteredMovies);
+        const key = 'id';
+
+        const arrayUniqueByKey = [...new Map(newSearchedMovies.map(item =>
+            [item[key], item])).values()];
+
+        localStorage.setItem('searchedMovies', JSON.stringify(arrayUniqueByKey));
+        setHandleAddMovies(arrayUniqueByKey);
+        }
+    }
+
+    const handleChangeCheckbox = () => {
+        if (location.pathname === '/movies') {
+            const isShortMovies = !checked
+            localStorage.setItem('shortMovies', JSON.stringify(isShortMovies));
+
+            setChecked(isShortMovies);
+
+            const searchFilms = JSON.parse(localStorage.getItem('searchedMovies'));
+
+            const filteredMovies = searchFilms.filter(movie => {
+                return movie.duration <= TIMEOFTHESHORTFILMS;
+            });
+
+            isShortMovies ? setHandleAddMovies(filteredMovies) : setHandleAddMovies(searchFilms);
+        } else {
+            const isShortMovies = !checked
+            setChecked(isShortMovies);
+
+            const searchSavedFilms = JSON.parse(localStorage.getItem('savedMovies'));
+
+            const filteredFilms = searchSavedFilms.filter(movie => {
+                return movie.duration <= TIMEOFTHESHORTFILMS;
+            });
+
+            isShortMovies ? setHandleAddMovies(filteredFilms) : setHandleAddMovies(searchSavedFilms);
+        }
     }
 
     return (
@@ -47,13 +97,25 @@ function SearchForm({ setSearchMovies }) {
                     onChange={e => setSearchText(e.target.value)}
                     value={searchText}
                     required />
-                <button className="search__button" type="submit">
+                <button className={
+                    searchText === ''
+                        ?
+                        'search__button search__button_unactive' : "search__button"
+                }
+                    type="submit" >
                 </button>
             </form>
-            <div>{error}</div>
+            {isError && <div className="search__error">{error}</div>}
             <div className='check'>
                 <label className="checkbox">
-                    <input className="checkbox__input" type="checkbox" />
+                    <input
+                        className="checkbox__input"
+                        type="checkbox"
+                        checked={
+                            location.pathname === '/movies' ?
+                                JSON.parse(localStorage.getItem('shortMovies')) || false : checked
+                        }
+                        onChange={() => handleChangeCheckbox()} />
                     <span className='switch'></span>
                 </label>
                 <span className="check__text">

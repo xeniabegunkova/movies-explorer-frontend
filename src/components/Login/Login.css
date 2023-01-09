@@ -15,6 +15,10 @@
     text-align: initial;
 }
 
+.login__link {
+    border: none;
+}
+
 .login__img {
     max-width: 38px;
     min-height: 38px;

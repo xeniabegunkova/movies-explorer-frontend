@@ -4,7 +4,7 @@ import MainApi from "../../../utils/MainApi"
 import { useLocation } from "react-router-dom";
 import Preloader from "../../Preloader/Preloader"
 
-function MoviesCardListSaved({ searchMovies = [] }) {
+function MoviesCardListSaved() {
 
     const [savedMovie, setSavedMovie] = useState([]);
     const [error, setError] = useState('');

@@ -12,6 +12,7 @@ import {
     NUMBEROFCELLSINAROW_1280,
     NUMBEROFCELLSINAROW_768
 } from '../../utils/constants'
+import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList({ searchMovies = [], setSearchMovies }) {
 
@@ -19,19 +20,24 @@ function MoviesCardList({ searchMovies = [], setSearchMovies }) {
     const [moviesCounter, setMoviesCounter] = useState();
     const [more, setMore] = useState();
     const [savedMovie, setSavedMovie] = useState([]);
+    const [load, setLoad] = useState(false);
 
     function checkSaveMovie() {
         let array = []
         MainApi.getSavedMovies()
             .then((data) => {
                 array = data.data
-                localStorage.setItem('savedMovies', JSON.stringify(array))
+                localStorage.setItem('savedMovies', JSON.stringify(array));
             })
     }
 
     useEffect(() => {
-        checkSaveMovie()
+        checkSaveMovie();
     }, [])
+
+    useEffect(() => {
+        setLoad(true)
+    })
 
 
     useEffect(() => {
@@ -68,7 +74,7 @@ function MoviesCardList({ searchMovies = [], setSearchMovies }) {
         <>
             <section className='movie-list'>
                 <ul className='movie-list__elements'>
-                    {
+                    {load ?
                         searchMovies.slice(0, moviesCounter).map((movie) => {
                             return (
                                 <MoviesCard
@@ -82,7 +88,7 @@ function MoviesCardList({ searchMovies = [], setSearchMovies }) {
                                 />
                             )
                         }
-                        )}
+                        ).reverse() : <Preloader />}
                 </ul>
             </section>
             {searchMovies.length > moviesCounter ?

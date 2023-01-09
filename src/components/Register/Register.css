@@ -15,6 +15,10 @@
     text-align: initial;
 }
 
+.auth__link {
+    border: none;
+}
+
 .auth__img {
     max-width: 38px;
     min-height: 38px;

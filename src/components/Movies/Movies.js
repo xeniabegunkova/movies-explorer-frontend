@@ -4,9 +4,9 @@ import SearchForm from "../SearchForm/SearchForm";
 import Footer from "../Footer/Footer";
 import './Movies.css';
 import { useState } from "react";
-import MainApi from "../../utils/MainApi"
 
-function Movies({handleDelete}) {
+function Movies({ handleDelete }) {
+    
     const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
 
     const [searchMovies, setSearchMovies] = useState(alreadySearchedMovies);
@@ -14,8 +14,12 @@ function Movies({handleDelete}) {
     return (
         <>
             <Header />
-            <SearchForm setSearchMovies={setSearchMovies} />
-            <MoviesCardList searchMovies={searchMovies} handleDelete={handleDelete} setSearchMovies={setSearchMovies}/>
+            <SearchForm
+                setHandleAddMovies={setSearchMovies} />
+            <MoviesCardList
+                searchMovies={searchMovies}
+                handleDelete={handleDelete}
+                setHandleAddMovies={setSearchMovies} />
             <Footer />
         </>
     )

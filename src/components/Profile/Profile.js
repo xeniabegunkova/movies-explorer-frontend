@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import './Profile.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import MainApi from '../../utils/MainApi';
 
 function Profile({ setCurrentUser, handleLogOut }) {
@@ -22,13 +21,14 @@ function Profile({ setCurrentUser, handleLogOut }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setUserData((prev) => ({ ...prev, [name]: value }));
-        
+
     };
 
     function userDataChange(data) {
         MainApi.updateUserData(data.name, data.email)
             .then((data) => {
-                localStorage.getItem('jwt', data.token)
+                localStorage.getItem('jwt')
+                console.log(data.token)
                 setCurrentUser(data.data);
             })
             .catch((err) => {
@@ -66,9 +66,16 @@ function Profile({ setCurrentUser, handleLogOut }) {
 
                 </form>
                 <button
-                    className={userData.name !== currentUser.name || userData.email !== currentUser.email ? 'profile__button' : "profile__button profile__button_unactive"}
+                    className={
+                        userData.name !== currentUser.name || userData.email !== currentUser.email
+                            ?
+                            'profile__button' : "profile__button profile__button_unactive"
+                    }
                     type='submit'
-                    disabled={userData.name !== currentUser.name || userData.email !== currentUser.email ? false : true}
+                    disabled={
+                        userData.name !== currentUser.name || userData.email !== currentUser.email
+                            ?
+                            false : true}
                     onClick={() => userDataChange(userData)}
                 >
                     Редактировать

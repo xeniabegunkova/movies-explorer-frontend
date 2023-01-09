@@ -14,4 +14,6 @@
     export const NUMBEROFCELLSINAROW_1280 = 3;
     export const NUMBEROFCELLSINAROW_768 = 2;
 
-    
+    //num of min of 
+
+    export const TIMEOFTHESHORTFILMS = 40;
