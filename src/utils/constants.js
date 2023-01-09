@@ -17,23 +17,3 @@ export const NUMBEROFCELLSINAROW_768 = 2;
 //num of min of 
 
 export const TIMEOFTHESHORTFILMS = 40;
-
-//conastant for search
-export const SEARCHFILMS = () => {
-    const searchFilms = JSON.parse(localStorage.getItem('searchedMovies'));
-
-    const filteredMovies = searchFilms.filter(movie => {
-        return movie.duration <= TIMEOFTHESHORTFILMS;
-    });
-}
-
-
-
-export const SEARCHSAVEDFILMS = () => {
-
-    const searchSavedFilms = JSON.parse(localStorage.getItem('savedMovies'));
-
-    const filteredFilms = searchSavedFilms.filter(movie => {
-        return movie.duration <= TIMEOFTHESHORTFILMS;
-    });
-}

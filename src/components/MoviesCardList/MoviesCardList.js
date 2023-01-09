@@ -15,6 +15,7 @@ import {
 import Preloader from "../Preloader/Preloader";
 
 function MoviesCardList({ searchMovies = [], setSearchMovies }) {
+    console.log(setSearchMovies)
 
     const [size, setSize] = useState(window.innerWidth);
     const [moviesCounter, setMoviesCounter] = useState();

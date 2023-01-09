@@ -23,7 +23,8 @@ function NavigationFilms() {
                         </NavLink>
                         <NavLink
                             to="/saved-movies"
-                            className='navigation__films-name'>
+                            className='navigation__films-name'
+                            >
                             Сохранённые фильмы
                         </NavLink>
                     </div>

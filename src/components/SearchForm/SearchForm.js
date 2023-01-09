@@ -3,14 +3,12 @@ import './SearchForm.css'
 import { getMovieList } from '../../utils/MoviesApi';
 import { TIMEOFTHESHORTFILMS } from "../../utils/constants";
 import { useLocation } from 'react-router-dom';
-//import {SEARCHFILMS } from '../../utils/constants';
 
 function SearchForm({ setHandleAddMovies }) {
     const [searchText, setSearchText] = useState('');
     const [error, setError] = useState('');
     const [movies, setMovies] = useState();
     const [isError, setIsError] = useState(false);
-
 
     const [checked, setChecked] = useState(false);
     const location = useLocation();
@@ -24,11 +22,9 @@ function SearchForm({ setHandleAddMovies }) {
             })
         if (JSON.parse(localStorage.getItem('shortMovies'))) {
             const searchFilms = JSON.parse(localStorage.getItem('searchedMovies'));
-
             const filteredMovies = searchFilms.filter(movie => {
                 return movie.duration <= TIMEOFTHESHORTFILMS;
             });
-
             setHandleAddMovies(filteredMovies);
         }
     }, [])
@@ -52,13 +48,26 @@ function SearchForm({ setHandleAddMovies }) {
             const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
 
             const newSearchedMovies = alreadySearchedMovies.concat(filteredMovies);
+
             const key = 'id';
+
+            //const keyTwo = 'nameRU' || 'nameEN';
 
             const arrayUniqueByKey = [...new Map(newSearchedMovies.map(item =>
                 [item[key], item])).values()];
 
             localStorage.setItem('searchedMovies', JSON.stringify(arrayUniqueByKey));
+
+            /* const alreadySavedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
+ 
+             localStorage.setItem('savedMovies', JSON.stringify(arrayUniqueByKey));
+             const newSavedMovies = alreadySavedMovies.concat(filteredMovies);
+ 
+             const arrayUniqueByKeySaved = [...new Map(newSavedMovies.map(item =>
+                 [item[key], item])).values()];*/
+
             setHandleAddMovies(arrayUniqueByKey);
+            //setHandleAddMovies(arrayUniqueByKeySaved);
         }
     }
 
@@ -76,8 +85,10 @@ function SearchForm({ setHandleAddMovies }) {
             });
 
             isShortMovies ? setHandleAddMovies(filteredMovies) : setHandleAddMovies(searchFilms);
-        } else {
-            const isShortMovies = !checked
+        }
+        else {
+            //localStorage.removeItem('shortMovies');
+            const isShortMovies = !checked;
             setChecked(isShortMovies);
 
             const searchSavedFilms = JSON.parse(localStorage.getItem('savedMovies'));
@@ -116,7 +127,7 @@ function SearchForm({ setHandleAddMovies }) {
                         type="checkbox"
                         checked={
                             location.pathname === '/movies' ?
-                                JSON.parse(localStorage.getItem('shortMovies')) || false : checked
+                                JSON.parse(localStorage.getItem('shortMovies')) || false : localStorage.removeItem('shortMovies')
                         }
                         onChange={() => handleChangeCheckbox()} />
                     <span className='switch'></span>

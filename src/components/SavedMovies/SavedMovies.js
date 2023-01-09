@@ -9,13 +9,18 @@ function SavedMovies({ handleDelete }) {
     const alreadySavedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
 
     const [savedMovies, setSavedMovies] = useState(alreadySavedMovies);
-    console.log(alreadySavedMovies)
+    //console.log(alreadySavedMovies)
+
+    function handleRemoveItem() {
+        JSON.parse(localStorage.removeItem('shortMovies'))
+    }
 
     return (
         <>
             <Header />
             <SearchForm
-                setHandleAddMovies={setSavedMovies} />
+                setHandleAddMovies={setSavedMovies}
+                handleRemoveItem={handleRemoveItem} />
             <MoviesCardListSaved
                 savedMovies={savedMovies}
                 handleDelete={handleDelete}
