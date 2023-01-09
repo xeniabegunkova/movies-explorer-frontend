@@ -3,6 +3,7 @@ import './SearchForm.css'
 import { getMovieList } from '../../utils/MoviesApi';
 import { TIMEOFTHESHORTFILMS } from "../../utils/constants";
 import { useLocation } from 'react-router-dom';
+//import {SEARCHFILMS } from '../../utils/constants';
 
 function SearchForm({ setHandleAddMovies }) {
     const [searchText, setSearchText] = useState('');
@@ -23,9 +24,11 @@ function SearchForm({ setHandleAddMovies }) {
             })
         if (JSON.parse(localStorage.getItem('shortMovies'))) {
             const searchFilms = JSON.parse(localStorage.getItem('searchedMovies'));
+
             const filteredMovies = searchFilms.filter(movie => {
                 return movie.duration <= TIMEOFTHESHORTFILMS;
             });
+
             setHandleAddMovies(filteredMovies);
         }
     }, [])
@@ -36,26 +39,26 @@ function SearchForm({ setHandleAddMovies }) {
             setError('Нужно ввести ключевое слово');
             setIsError(true);
         } else {
-        const filteredMovies = movies.filter(movie =>
-            movie
-                .nameRU
-                .toLowerCase()
-                .includes(searchText.toLowerCase()) ||
-            movie
-                .nameEN
-                .toLowerCase()
-                .includes(searchText.toLowerCase())
-        )
-        const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
+            const filteredMovies = movies.filter(movie =>
+                movie
+                    .nameRU
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase()) ||
+                movie
+                    .nameEN
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase())
+            )
+            const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
 
-        const newSearchedMovies = alreadySearchedMovies.concat(filteredMovies);
-        const key = 'id';
+            const newSearchedMovies = alreadySearchedMovies.concat(filteredMovies);
+            const key = 'id';
 
-        const arrayUniqueByKey = [...new Map(newSearchedMovies.map(item =>
-            [item[key], item])).values()];
+            const arrayUniqueByKey = [...new Map(newSearchedMovies.map(item =>
+                [item[key], item])).values()];
 
-        localStorage.setItem('searchedMovies', JSON.stringify(arrayUniqueByKey));
-        setHandleAddMovies(arrayUniqueByKey);
+            localStorage.setItem('searchedMovies', JSON.stringify(arrayUniqueByKey));
+            setHandleAddMovies(arrayUniqueByKey);
         }
     }
 

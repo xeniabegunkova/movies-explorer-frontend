@@ -4,9 +4,9 @@ import MainApi from "../../../utils/MainApi"
 import { useLocation } from "react-router-dom";
 import Preloader from "../../Preloader/Preloader"
 
-function MoviesCardListSaved() {
+function MoviesCardListSaved({ savedMovies = [], setSavedMovie }) {
 
-    const [savedMovie, setSavedMovie] = useState([]);
+    //const [savedMovie, setSavedMovie] = useState([]);
     const [error, setError] = useState('');
     const location = useLocation();
     const [load, setLoad] = useState(false);
@@ -16,8 +16,9 @@ function MoviesCardListSaved() {
             MainApi.getSavedMovies(localStorage.getItem('jwt'))
                 .then((data) => {
                     let savedMoviesArray = data.data;
-                    localStorage.setItem('savedMovies', JSON.stringify(savedMoviesArray));
-                    setSavedMovie(JSON.parse((localStorage.getItem('savedMovies'))));
+                    console.log(savedMoviesArray)
+                    localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+                    //setSavedMovie(JSON.parse((localStorage.getItem('savedMovies'))));
                     setLoad(true);
                 })
                 .catch((err) => {
@@ -35,7 +36,7 @@ function MoviesCardListSaved() {
     const handleDelete = (movie) => {
         MainApi.deleteMovie(movie._id)
             .then((data) => {
-                const newArray = savedMovie.filter(e => e._id !== data._id)
+                const newArray = savedMovies.filter(e => e._id !== data._id)
                 console.log(newArray)
                 localStorage.setItem('savedMovies', JSON.stringify(newArray))
                 setSavedMovie(newArray)
@@ -49,7 +50,7 @@ function MoviesCardListSaved() {
         <>
             <section className='movie-list'>
                 <ul className='movie-list__elements'>
-                    {load ? savedMovie
+                    {load ? savedMovies
                         .map((movie, idx) => {
                             return (
                                 <MoviesCard
