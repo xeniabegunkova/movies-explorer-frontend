@@ -45,29 +45,22 @@ function SearchForm({ setHandleAddMovies }) {
                     .toLowerCase()
                     .includes(searchText.toLowerCase())
             )
-            const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
+            const alreadySearchedMovies =
+                JSON.parse(localStorage.getItem('searchedMovies')) ||
+                JSON.parse(localStorage.getItem('savedMovies')) ||
+                []; //получаем серч мувиз
 
-            const newSearchedMovies = alreadySearchedMovies.concat(filteredMovies);
+            const newSearchedMovies = alreadySearchedMovies.concat(filteredMovies); 
 
-            const key = 'id';
-
-            //const keyTwo = 'nameRU' || 'nameEN';
+            const key = 'id'; 
 
             const arrayUniqueByKey = [...new Map(newSearchedMovies.map(item =>
-                [item[key], item])).values()];
+                [item[key], item])).values()]; 
 
             localStorage.setItem('searchedMovies', JSON.stringify(arrayUniqueByKey));
-
-            /* const alreadySavedMovies = JSON.parse(localStorage.getItem('savedMovies')) || [];
- 
-             localStorage.setItem('savedMovies', JSON.stringify(arrayUniqueByKey));
-             const newSavedMovies = alreadySavedMovies.concat(filteredMovies);
- 
-             const arrayUniqueByKeySaved = [...new Map(newSavedMovies.map(item =>
-                 [item[key], item])).values()];*/
+            localStorage.setItem('savedMovies', JSON.stringify(arrayUniqueByKey))
 
             setHandleAddMovies(arrayUniqueByKey);
-            //setHandleAddMovies(arrayUniqueByKeySaved);
         }
     }
 
@@ -87,7 +80,6 @@ function SearchForm({ setHandleAddMovies }) {
             isShortMovies ? setHandleAddMovies(filteredMovies) : setHandleAddMovies(searchFilms);
         }
         else {
-            //localStorage.removeItem('shortMovies');
             const isShortMovies = !checked;
             setChecked(isShortMovies);
 

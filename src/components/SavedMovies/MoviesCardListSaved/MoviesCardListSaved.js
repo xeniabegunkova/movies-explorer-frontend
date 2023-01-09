@@ -4,9 +4,8 @@ import MainApi from "../../../utils/MainApi"
 import { useLocation } from "react-router-dom";
 import Preloader from "../../Preloader/Preloader"
 
-function MoviesCardListSaved({ savedMovies = [], setSavedMovies }) {
+function MoviesCardListSaved({ savedMovies = [], setHandleAddMovies }) {
 
-    const [savedMovie, setSavedMovie] = useState([]);
     const [error, setError] = useState('');
     const location = useLocation();
     const [load, setLoad] = useState(false);
@@ -18,7 +17,7 @@ function MoviesCardListSaved({ savedMovies = [], setSavedMovies }) {
                     let savedMoviesArray = data.data;
                     console.log(savedMoviesArray)
                     localStorage.setItem('savedMovies', JSON.stringify(savedMoviesArray));
-                    setSavedMovie(JSON.parse((localStorage.getItem('savedMovies')))); // поменять
+                    setHandleAddMovies(JSON.parse((localStorage.getItem('savedMovies')))); // поменять
                     setLoad(true);
                 })
                 .catch((err) => {
@@ -39,7 +38,7 @@ function MoviesCardListSaved({ savedMovies = [], setSavedMovies }) {
                 const newArray = savedMovies.filter(e => e._id !== data._id)
                 console.log(newArray)
                 localStorage.setItem('savedMovies', JSON.stringify(newArray))
-                setSavedMovie(newArray)
+                setHandleAddMovies(newArray)
             })
             .catch((err) => {
                 console.log(err)
