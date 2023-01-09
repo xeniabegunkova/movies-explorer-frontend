@@ -12,9 +12,11 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import MainApi from '../../utils/MainApi';
 import * as auth from '../../utils/auth';
 
+
 import './App.css';
 
 import { useEffect, useState } from 'react';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [email, setEmail] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isInfoTooltipOpen, setInfoTooltipOpen] = useState(false);
+  const [status, setStatus] = useState(false);
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const navigate = useNavigate();
@@ -81,11 +85,15 @@ function App() {
 
   function handleRegistration(name, email, password) {
     auth.register(name, email, password)
-      .then((data) => {
+      .then(() => {
         handleLogin(email, password);
+        setInfoTooltipOpen(true);
+        setStatus(true);
       })
       .catch((err) => {
         console.log(err);
+        setStatus(false)
+        setInfoTooltipOpen(true)
       })
   }
 
@@ -102,6 +110,21 @@ function App() {
         console.log(err);
       })
   }
+
+  function closePopup() {
+    setInfoTooltipOpen(false)
+  }
+
+  useEffect(() => {
+    function closeByEscape(evt) {
+      if (evt.key === 'Escape') {
+        closePopup();
+      }
+    }
+    return () => {
+      document.removeEventListener('keydown', closeByEscape);
+    }
+  })
 
   function handleLogOut() {
     localStorage.removeItem('jwt');
@@ -138,7 +161,12 @@ function App() {
           </Routes>
 
           <Routes>
-            <Route exact path="/profile" element={<Profile setCurrentUser={setCurrentUser} name={name} email={email} id={id} handleLogOut={handleLogOut} />} />
+            <Route exact path="/profile" element={<Profile
+              setCurrentUser={setCurrentUser}
+              name={name}
+              email={email}
+              id={id}
+              handleLogOut={handleLogOut} />} />
           </Routes>
 
           <Routes>
@@ -147,6 +175,13 @@ function App() {
 
           <Routes>
             <Route exact path="/" element={<Footer />} />
+          </Routes>
+
+          <Routes>
+            <Route exact path="signup" element={<InfoTooltip
+              isOpen={isInfoTooltipOpen}
+              onClose={closePopup}
+              status={status} />} />
           </Routes>
 
         </CurrentMoviesContext.Provider>

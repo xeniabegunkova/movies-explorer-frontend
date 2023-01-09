@@ -15,6 +15,7 @@ function SavedMovies({ handleDelete }) {
             <Header />
             <SearchForm
                 setHandleAddMovies={setSavedMovies}
+                setSavedMovies={setSavedMovies}
             />
             <MoviesCardListSaved
                 savedMovies={savedMovies}

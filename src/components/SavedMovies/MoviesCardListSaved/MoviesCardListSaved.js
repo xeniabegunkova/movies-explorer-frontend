@@ -17,7 +17,8 @@ function MoviesCardListSaved({ savedMovies = [], setHandleAddMovies }) {
                     let savedMoviesArray = data.data;
                     console.log(savedMoviesArray)
                     localStorage.setItem('savedMovies', JSON.stringify(savedMoviesArray));
-                    setHandleAddMovies(JSON.parse((localStorage.getItem('savedMovies')))); // поменять
+                    setHandleAddMovies(JSON.parse((localStorage.getItem('savedMovies')))); 
+                    savedMoviesArray.length === 0 && setError('Ничего не найдено');
                     setLoad(true);
                 })
                 .catch((err) => {
@@ -28,7 +29,7 @@ function MoviesCardListSaved({ savedMovies = [], setHandleAddMovies }) {
     }
 
     useEffect(() => {
-        saveMovie()
+        saveMovie();
     }, [location.pathname]);
 
 
