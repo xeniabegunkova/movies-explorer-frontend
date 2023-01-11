@@ -1,0 +1,148 @@
+.profile {
+  margin: 0 auto;
+  width: 1280px;
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.profile__title {
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 24px;
+  line-height: 29px;
+  padding-top: 74px;
+  padding-bottom: 107px;
+}
+
+.profile__about {
+  margin: 0 auto;
+  padding: 0;
+  width: 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__label {
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  padding: 16px 0;
+  font-weight: 550;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.profile__label:nth-last-of-type(1) {
+  border: 0;
+  padding-bottom: 220px;
+  margin-bottom: 2px;
+}
+
+.profile__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  font-weight: 450;
+  font-size: 11px;
+  line-height: 13px;
+  width: 100%;
+  text-align: right;
+  background-color: transparent;
+  padding: 16px 0;
+}
+
+.profile__button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-style: normal;
+  font-weight: 450;
+  font-size: 13px;
+  line-height: 16px;
+  padding-bottom: 16px;
+  cursor: pointer;
+}
+
+.profile__button:last-child {
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+}
+
+.profile__button_unactive {
+  cursor: auto;
+  opacity: 0.8;
+}
+
+.profile__button_unactive:hover {
+  opacity: 0.8;
+}
+
+.profile__button_logout {
+  text-decoration: none;
+  color: #ff004d;
+}
+
+.profile__input-error {
+  height: 12px;
+  font-style: normal;
+  font-weight: 450;
+  font-size: 10px;
+  line-height: 12px;
+  margin-top: 6px;
+  width: 390px;
+  color: #ff4062;
+  margin-bottom: 198px;
+}
+
+@media screen and (max-width: 1169px) {
+  .profile {
+    width: 768px;
+    padding-bottom: 268px;
+  }
+
+  .profile__title {
+    padding-top: 236px;
+    padding-bottom: 80px;
+  }
+
+  .profile__label:nth-last-of-type(1) {
+    padding-bottom: 210px;
+  }
+}
+
+@media screen and (max-width: 714px) {
+  .profile {
+    width: 320px;
+    padding-bottom: 40px;
+  }
+
+  .profile__title {
+    padding-top: 70px;
+    padding-bottom: 64px;
+  }
+
+  .profile__about {
+    width: 250px;
+  }
+
+  .profile__button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
