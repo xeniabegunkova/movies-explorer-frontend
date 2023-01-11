@@ -20,7 +20,7 @@ function InfoTooltip({ isOpen, onClose, status }) {
                             alt="Успешная регистрация"
                             className='popup__tooltip-img' />
                         <p className='popup__message'>
-                            Вы успешно зарегистрировались!
+                            Ваши данные успешно сохранены!
                         </p>
                     </>)
                     :

@@ -87,13 +87,9 @@ function App() {
     auth.register(name, email, password)
       .then(() => {
         handleLogin(email, password);
-        setInfoTooltipOpen(true);
-        setStatus(true);
       })
       .catch((err) => {
         console.log(err);
-        setStatus(false)
-        setInfoTooltipOpen(true)
       })
   }
 
@@ -110,21 +106,6 @@ function App() {
         console.log(err);
       })
   }
-
-  function closePopup() {
-    setInfoTooltipOpen(false)
-  }
-
-  useEffect(() => {
-    function closeByEscape(evt) {
-      if (evt.key === 'Escape') {
-        closePopup();
-      }
-    }
-    return () => {
-      document.removeEventListener('keydown', closeByEscape);
-    }
-  })
 
   function handleLogOut() {
     localStorage.removeItem('jwt');
@@ -161,17 +142,9 @@ function App() {
             />} />
 
             <Route path="*" element={<NotFound />} />
-          </Routes>
 
-          <Routes>
             <Route exact path="/" element={<Footer />} />
-          </Routes>
 
-          <Routes>
-            <Route exact path="profile" element={<InfoTooltip
-              isOpen={isInfoTooltipOpen}
-              onClose={closePopup}
-              status={status} />} />
           </Routes>
 
         </CurrentMoviesContext.Provider>

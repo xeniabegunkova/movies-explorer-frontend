@@ -4,10 +4,15 @@ import './Profile.css';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { useEffect, useState, useContext } from 'react';
 import MainApi from '../../utils/MainApi';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
+
 
 function Profile({ setCurrentUser, handleLogOut }) {
 
     const currentUser = useContext(CurrentUserContext);
+
+    const [isInfoTooltipOpen, setInfoTooltipOpen] = useState(false);
+    const [status, setStatus] = useState(false);
 
     const [userData, setUserData] = useState({ name: '', email: '' });
 
@@ -30,11 +35,30 @@ function Profile({ setCurrentUser, handleLogOut }) {
                 localStorage.getItem('jwt')
                 console.log(data.token)
                 setCurrentUser(data.data);
+                setInfoTooltipOpen(true);
+                setStatus(true);
             })
             .catch((err) => {
                 console.log(err);
+                setStatus(false)
+                setInfoTooltipOpen(true)
             })
     }
+
+    function closePopup() {
+        setInfoTooltipOpen(false)
+    }
+
+    useEffect(() => {
+        function closeByEscape(evt) {
+            if (evt.key === 'Escape') {
+                closePopup();
+            }
+        }
+        return () => {
+            document.removeEventListener('keydown', closeByEscape);
+        }
+    })
 
     return (
         <>
@@ -86,6 +110,11 @@ function Profile({ setCurrentUser, handleLogOut }) {
                 >
                     Выйти из аккаунта
                 </Link>
+
+                <InfoTooltip
+                    isOpen={isInfoTooltipOpen}
+                    onClose={closePopup}
+                    status={status} />
             </section>
         </>
     )
