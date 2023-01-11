@@ -41,7 +41,6 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
     }
 
     const handleDeleteMovie = () => {
-        handleDelete(movie);
         checkArray(movie);
     }
 
@@ -49,7 +48,6 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
         JSON.parse(localStorage.getItem('savedMovies')).forEach((item) => {
             if (movie.nameRU === item.nameRU) {
                 handleDelete(item)
-                console.log(item)
                 setIsSave(!isSave)
             }
         })

@@ -59,9 +59,9 @@ function MoviesCardList({ searchMovies = [], savedMovies = [], setHandleAddMovie
     const handleDelete = (movie) => {
         MainApi.deleteMovie(movie._id)
             .then((data) => {
-                const newArray = savedMovies.filter(e => e._id !== data._id)
-                localStorage.setItem('savedMovies', JSON.stringify(newArray))
-                setHandleAddMovies(newArray)
+                //const newArray = savedMovies.filter(e => e._id !== data._id)
+                //localStorage.setItem('savedMovies', JSON.stringify(newArray))
+                //setHandleAddMovies(newArray)
                 setHandleAddMovies(JSON.parse((localStorage.getItem('searchedMovies'))))
             })
             .catch((err) => {

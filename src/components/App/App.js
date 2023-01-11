@@ -19,7 +19,7 @@ import './App.css';
 
 import { useEffect, useState } from 'react';
 
-function App() {
+function App({ savedMovies = [], setHandleAddMovies }) {
 
   const [currentUser, setCurrentUser] = useState({});
   const [movies, setMovies] = useState([]);
@@ -94,6 +94,8 @@ function App() {
         handleLogin(email, password);
       })
       .catch((err) => {
+        setStatus(false)
+        setInfoTooltipOpen(true)
         console.log(err);
       })
   }
@@ -125,6 +127,20 @@ function App() {
     setCurrentUser({});
     setMovies([]);
   }
+
+  /*const handleDelete = (movie) => {
+    MainApi.deleteMovie(movie._id)
+        .then((data) => {
+            const newArray = savedMovies.filter(e => e._id !== data._id)
+            console.log(newArray)
+            localStorage.setItem('savedMovies', JSON.stringify(newArray))
+            //setHandleAddMovies(JSON.parse((localStorage.getItem('searchedMovies'))))
+            //setHandleAddMovies(newArray)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}*/
 
   return (
     <div className="App">
