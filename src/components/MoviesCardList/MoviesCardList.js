@@ -41,8 +41,8 @@ function MoviesCardList({ searchMovies = [], setSearchMovies }) {
 
 
     useEffect(() => {
-        const width = () => setSize(window.innerWidth);
-        window.addEventListener('resize', width);
+        const handleWidth = () => setSize(window.innerWidth);
+        window.addEventListener('resize', handleWidth);
         if (size > SCREENWIDTH_1280) {
             setMoviesCounter(NUMBEROFCELLS_1280);
             setMore(NUMBEROFCELLSINAROW_1280)
@@ -53,7 +53,7 @@ function MoviesCardList({ searchMovies = [], setSearchMovies }) {
             setMoviesCounter(NUMBEROFCELLS_600);
             setMore(NUMBEROFCELLSINAROW_768);
         }
-        return () => window.removeEventListener('resize', width)
+        return () => window.removeEventListener('resize', handleWidth)
     }, [size]);
 
     const handleDelete = (movie) => {
@@ -88,7 +88,7 @@ function MoviesCardList({ searchMovies = [], setSearchMovies }) {
                                 />
                             )
                         }
-                        ).reverse() : <Preloader />}
+                        ) : <Preloader />}
                 </ul>
             </section>
             {searchMovies.length > moviesCounter ?

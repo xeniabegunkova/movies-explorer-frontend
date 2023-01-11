@@ -95,7 +95,6 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
             isShortMovies ? setHandleAddMovies(filteredMovies) : setHandleAddMovies(searchFilms);
         }
         else if (location.pathname === '/saved-movies') {
-            //localStorage.removeItem('shortMovies')
             const isShortMovies = !checked;
             setChecked(isShortMovies);
 
