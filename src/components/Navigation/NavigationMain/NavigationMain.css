@@ -1,57 +1,55 @@
 .navigation-auth__main {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 .navigation-auth__main-name {
-    margin: 0;
-    cursor: pointer;
-    color: #000;
-    text-decoration: none;
-    margin-top: 29px;
-    margin-bottom: 29px;
-    font-weight: 550;
-    font-size: 12px;
-    line-height: 16px;
+  margin: 0;
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  margin-top: 29px;
+  margin-bottom: 29px;
+  font-weight: 550;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .navigation-auth__main-name:last-child {
-    color: white;
-    margin-top: 21px;
-    margin-bottom: 21px;
+  color: white;
+  margin-top: 21px;
+  margin-bottom: 21px;
 }
 
 .navigation-auth__main-name_button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 76px;
-    height: 32px;
-    background-color: #000;
-    border-radius: 3px;
-    margin-left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 76px;
+  height: 32px;
+  background-color: #000;
+  border-radius: 3px;
+  margin-left: 30px;
 }
 
 .navigation-auth__main-name:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 426px) {
+  .navigation-auth__main-name {
+    font-size: 10px;
+  }
 
-    .navigation-auth__main-name {
-        font-size: 10px;
-    }
-    
-    .navigation-auth__main-name:last-child {
-        margin-top: 24px;
-        margin-bottom: 24px;
-    }
+  .navigation-auth__main-name:last-child {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
 
-    .navigation-auth__main-name_button {
-        width: 54px;
-        height: 26px;
-        margin-left: 14px;
-    }
-    
+  .navigation-auth__main-name_button {
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+  }
 }

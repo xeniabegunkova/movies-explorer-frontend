@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
 import { useLocation, Navigate } from "react-router-dom";
 
-
 const ProtectedRoute = ({ component, loggedIn }) => {
-    const location = useLocation()
-    if (!loggedIn) {
-        return <Navigate to="/" state={{ from: location }} />
-    }
-    return component
+  const location = useLocation();
+  if (!loggedIn) {
+    return <Navigate to="/" state={{ from: location }} />;
+  }
+  return component;
 };
 
 export default ProtectedRoute;

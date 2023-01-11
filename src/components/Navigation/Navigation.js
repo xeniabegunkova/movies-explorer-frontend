@@ -1,13 +1,13 @@
 import NavigationFilms from "./NavigationFilms/NavigationFilms";
 import NavigationMain from "./NavigationMain/NavigationMain";
-import './Navigation.css'
+import "./Navigation.css";
 
 function Navigation() {
-    return (
-        <section className="nav">
-            {!localStorage.getItem('jwt') ? <NavigationMain /> : <NavigationFilms />}
-        </section>
-    )
+  return (
+    <section className="nav">
+      {!localStorage.getItem("jwt") ? <NavigationMain /> : <NavigationFilms />}
+    </section>
+  );
 }
 
 export default Navigation;

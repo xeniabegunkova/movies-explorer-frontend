@@ -1,78 +1,78 @@
 .not-found__information {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 .not-found__title {
-    margin: 0;
-    padding: 0;
-    margin-top: 246px;
-    font-style: normal;
-    font-weight: 450;
-    font-size: 140px;
-    line-height: 169px;
+  margin: 0;
+  padding: 0;
+  margin-top: 246px;
+  font-style: normal;
+  font-weight: 450;
+  font-size: 140px;
+  line-height: 169px;
 }
 
 .not-found__subtitle {
-    margin: 0;
-    padding: 0;
-    padding-top: 5px;
-    font-style: normal;
-    font-weight: 450;
-    font-size: 16px;
-    line-height: 19px;
+  margin: 0;
+  padding: 0;
+  padding-top: 5px;
+  font-style: normal;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 19px;
 }
 
 .not-found__link {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: black;
-    padding-top: 184px;
-    padding-bottom: 60px;
-    font-style: normal;
-    font-weight: 450;
-    font-size: 14px;
-    line-height: 17px;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: black;
+  padding-top: 184px;
+  padding-bottom: 60px;
+  font-style: normal;
+  font-weight: 450;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .not-found__link:hover {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .not-found__link:focus {
-    border: none;
+  border: none;
 }
 
 @media screen and (max-width: 768px) {
-    .not-found__title {
-        margin-top: 408px;
-    }
+  .not-found__title {
+    margin-top: 408px;
+  }
 
-    .not-found__link {
-        padding-bottom: 222px;
-    }
+  .not-found__link {
+    padding-bottom: 222px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .not-found__title {
-        margin-top: 329px;
-        font-size: 80px;
-        line-height: 97px;
-    }
+  .not-found__title {
+    margin-top: 329px;
+    font-size: 80px;
+    line-height: 97px;
+  }
 
-    .not-found__subtitle {
-        padding-top: 10px;
-        font-size: 12px;
-        line-height: 15px;
-    }
+  .not-found__subtitle {
+    padding-top: 10px;
+    font-size: 12px;
+    line-height: 15px;
+  }
 
-    .not-found__link {
-        padding-top: 284px;
-        padding-bottom: 30px;
-        font-size: 12px;
-        line-height: 15px;
-    }
+  .not-found__link {
+    padding-top: 284px;
+    padding-bottom: 30px;
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
