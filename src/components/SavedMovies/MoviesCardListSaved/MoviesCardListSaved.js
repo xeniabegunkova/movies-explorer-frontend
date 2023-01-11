@@ -51,10 +51,10 @@ function MoviesCardListSaved({ savedMovies = [], setHandleAddMovies }) {
             <section className='movie-list'>
                 <ul className='movie-list__elements'>
                     {load ? savedMovies
-                        .map((movie, idx) => {
+                        .map((movie) => {
                             return (
                                 <MoviesCard
-                                    key={idx}
+                                    key={movie._id}
                                     id={movie.id}
                                     movie={movie}
                                     nameRU={movie.nameRU}
