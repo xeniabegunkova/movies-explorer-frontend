@@ -33,7 +33,6 @@ function Profile({ setCurrentUser, handleLogOut }) {
         MainApi.updateUserData(data.name, data.email)
             .then((data) => {
                 localStorage.getItem('jwt')
-                console.log(data.token)
                 setCurrentUser(data.data);
                 setInfoTooltipOpen(true);
                 setStatus(true);

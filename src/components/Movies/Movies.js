@@ -5,8 +5,8 @@ import Footer from "../Footer/Footer";
 import './Movies.css';
 import { useState } from "react";
 
-function Movies({ handleDelete }) {
-    
+function Movies({ handleDelete}) {
+
     const alreadySearchedMovies = JSON.parse(localStorage.getItem('searchedMovies')) || [];
 
     const [searchMovies, setSearchMovies] = useState(alreadySearchedMovies);

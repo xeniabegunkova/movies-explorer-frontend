@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import Register from '../Register/Register';
@@ -11,12 +11,13 @@ import { CurrentMoviesContext } from '../../contexts/CurrentMoviesContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import MainApi from '../../utils/MainApi';
 import * as auth from '../../utils/auth';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+import InfoTooltipError from '../InfoTooltip/InfoToolTipError';
 
 import './App.css';
 
 import { useEffect, useState } from 'react';
-import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     loggedIn && Promise.all([
@@ -44,6 +46,7 @@ function App() {
         });
 
         setMovies(movies);
+        navigate(location.pathname)
       })
 
       .catch((err) => {
@@ -60,6 +63,7 @@ function App() {
           setName(data.data.name);
           setId(data.data._id);
           setLoggedIn(true);
+          navigate(location.pathname)
         })
         .catch((err) => {
           console.log(err);
@@ -76,6 +80,7 @@ function App() {
           setName(data.data.name);
           setId(data.data._id);
           setLoggedIn(true);
+          navigate(location.pathname)
         })
         .catch((err) => {
           console.log(err);
@@ -103,8 +108,14 @@ function App() {
         }
       })
       .catch((err) => {
+        setStatus(false)
+        setInfoTooltipOpen(true)
         console.log(err);
       })
+  }
+
+  function handleClose() {
+    setInfoTooltipOpen(false)
   }
 
   function handleLogOut() {
@@ -128,24 +139,33 @@ function App() {
 
             <Route exact path="/signup" element={<Register handleRegistration={handleRegistration} />} />
 
-            <Route exact path="/movies" element={<Movies loggedIn={loggedIn} />} />
+            <Route exact path="/movies" element={<ProtectedRoute loggedIn={loggedIn}
+              component={<Movies loggedIn={loggedIn} />}>
+            </ProtectedRoute>} />
 
-            <Route exact path="/saved-movies" element={<SavedMovies loggedIn={loggedIn} />} />
+            <Route exact path="/saved-movies" element={<ProtectedRoute loggedIn={loggedIn}
+              component={<SavedMovies loggedIn={loggedIn} />}></ProtectedRoute>} />
 
-            <Route exact path="/profile" element={<Profile
-              setCurrentUser={setCurrentUser}
-              name={name}
-              email={email}
-              id={id}
-              loggedIn={loggedIn}
-              handleLogOut={handleLogOut}
-            />} />
+            <Route exact path="/profile" element={<ProtectedRoute loggedIn={loggedIn}
+              component={<Profile
+                setCurrentUser={setCurrentUser}
+                name={name}
+                email={email}
+                id={id}
+                loggedIn={loggedIn}
+                handleLogOut={handleLogOut}
+              />}></ProtectedRoute>} />
 
             <Route path="*" element={<NotFound />} />
 
             <Route exact path="/" element={<Footer />} />
 
           </Routes>
+
+          <InfoTooltipError
+            isOpen={isInfoTooltipOpen}
+            onClose={handleClose}
+            status={status} />
 
         </CurrentMoviesContext.Provider>
 

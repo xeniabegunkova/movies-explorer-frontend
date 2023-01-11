@@ -13,6 +13,7 @@ function Login(props) {
     const [passwordError, setPasswordError] = useState('Поле пароль не может быть пустым');
 
     const handelerCheck = (e) => {
+
         switch (e.target.name) {
             case 'email':
                 setEmailDirty(true);
@@ -54,6 +55,7 @@ function Login(props) {
             password
         );
     }
+
     return (
         <section
             className="login">
@@ -118,7 +120,9 @@ function Login(props) {
                             ?
                             'login__button' : "login__button login__button_unactive"
                     }
-                    type="submit">
+                    type="submit"
+                    disabled={!emailError && !passwordError ? false : true}
+                    >
                     Войти
                 </button>
 
@@ -130,9 +134,8 @@ function Login(props) {
                         </Link>
                     </p>
                 </div>
+
             </form>
-
-
 
         </section>
     )

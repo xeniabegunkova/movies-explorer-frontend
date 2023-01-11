@@ -14,12 +14,12 @@ import {
 } from '../../utils/constants'
 import Preloader from "../Preloader/Preloader";
 
-function MoviesCardList({ searchMovies = [], setSearchMovies }) {
+function MoviesCardList({ searchMovies = [], savedMovies = [], setHandleAddMovies }) {
 
     const [size, setSize] = useState(window.innerWidth);
     const [moviesCounter, setMoviesCounter] = useState();
     const [more, setMore] = useState();
-    const [savedMovie, setSavedMovie] = useState([]);
+    //const [savedMovie, setSavedMovie] = useState([]);
     const [load, setLoad] = useState(false);
 
     function checkSaveMovie() {
@@ -59,11 +59,10 @@ function MoviesCardList({ searchMovies = [], setSearchMovies }) {
     const handleDelete = (movie) => {
         MainApi.deleteMovie(movie._id)
             .then((data) => {
-                const newArray = savedMovie.filter(e => e._id !== data._id)
+                const newArray = savedMovies.filter(e => e._id !== data._id)
                 localStorage.setItem('savedMovies', JSON.stringify(newArray))
-                setSavedMovie(newArray)
-                setSearchMovies(JSON.parse((localStorage.getItem('searchedMovies'))))
-                console.log(setSearchMovies)
+                setHandleAddMovies(newArray)
+                setHandleAddMovies(JSON.parse((localStorage.getItem('searchedMovies'))))
             })
             .catch((err) => {
                 console.log(err)

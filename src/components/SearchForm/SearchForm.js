@@ -21,6 +21,9 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
                     setMovies(response)
                 }
             })
+            .catch((err) => {
+                console.log(err);
+            })
         if (JSON.parse(localStorage.getItem('shortMovies'))) {
             const searchFilms = JSON.parse(localStorage.getItem('searchedMovies'));
             const filteredMovies = searchFilms.filter(movie => {
@@ -107,8 +110,6 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
             isShortMovies ? setHandleAddMovies(filteredFilms) : setHandleAddMovies(searchSavedFilms);
         }
     }
-
-
 
     return (
         <section className="search">
