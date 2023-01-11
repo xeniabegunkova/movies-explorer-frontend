@@ -94,7 +94,8 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
 
             isShortMovies ? setHandleAddMovies(filteredMovies) : setHandleAddMovies(searchFilms);
         }
-        else {
+        else if (location.pathname === '/saved-movies') {
+            //localStorage.removeItem('shortMovies')
             const isShortMovies = !checked;
             setChecked(isShortMovies);
 
@@ -108,6 +109,8 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
         }
     }
 
+
+
     return (
         <section className="search">
             <form className="search__form" onSubmit={handleSubmit} noValidate>
@@ -119,9 +122,7 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
                     value={searchText}
                     required />
                 <button className={
-                    searchText === ''
-                        ?
-                        'search__button search__button_unactive' : "search__button"
+                    searchText === '' ? 'search__button search__button_unactive' : "search__button"
                 }
                     type="submit" >
                 </button>
@@ -132,9 +133,8 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
                     <input
                         className="checkbox__input"
                         type="checkbox"
-                        checked={
-                            location.pathname === '/movies' ?
-                                JSON.parse(localStorage.getItem('shortMovies')) || false : localStorage.removeItem('shortMovies')
+                        checked={(location.pathname === '/movies') ?
+                            JSON.parse(localStorage.getItem('shortMovies')) || false : checked
                         }
                         onChange={() => handleChangeCheckbox()} />
                     <span className='switch'></span>
