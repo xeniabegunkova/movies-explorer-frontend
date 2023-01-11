@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Movies from '../Movies/Movies';
-import Error from '../Error/Error';
+import NotFound from '../NotFound/NotFound';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import { CurrentMoviesContext } from '../../contexts/CurrentMoviesContext';
@@ -142,35 +142,25 @@ function App() {
 
           <Routes>
             <Route exact path="/" element={<Main />} />
-          </Routes>
 
-          <Routes>
             <Route exact path="/signin" element={<Login handleLogin={handleLogin} />} />
-          </Routes>
 
-          <Routes>
             <Route exact path="/signup" element={<Register handleRegistration={handleRegistration} />} />
-          </Routes>
 
-          <Routes>
             <Route exact path="/movies" element={<Movies loggedIn={loggedIn} />} />
-          </Routes>
 
-          <Routes>
             <Route exact path="/saved-movies" element={<SavedMovies loggedIn={loggedIn} />} />
-          </Routes>
 
-          <Routes>
             <Route exact path="/profile" element={<Profile
               setCurrentUser={setCurrentUser}
               name={name}
               email={email}
               id={id}
-              handleLogOut={handleLogOut} />} />
-          </Routes>
+              loggedIn={loggedIn}
+              handleLogOut={handleLogOut}
+            />} />
 
-          <Routes>
-            <Route exact path="/error" element={<Error />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           <Routes>
@@ -178,7 +168,7 @@ function App() {
           </Routes>
 
           <Routes>
-            <Route exact path="signup" element={<InfoTooltip
+            <Route exact path="profile" element={<InfoTooltip
               isOpen={isInfoTooltipOpen}
               onClose={closePopup}
               status={status} />} />
