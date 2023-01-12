@@ -70,6 +70,7 @@ function Register(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    props.setBtnDisabled(false);
     props.handleRegistration(name, email, password);
   }
 
@@ -153,7 +154,7 @@ function Register(props) {
               : "auth__button auth__button_unactive"
           }
           type="submit"
-          disabled={!nameError && !emailError && !passwordError ? false : true}
+          disabled={!nameError && !emailError && !passwordError  && props.setBtnDisabled ? false : true}
         >
           Зарегистрироваться
         </button>

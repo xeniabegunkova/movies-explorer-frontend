@@ -5,13 +5,22 @@ import { TIMEOFTHESHORTFILMS } from "../../utils/constants";
 import { useLocation } from "react-router-dom";
 
 function SearchForm({ setHandleAddMovies, setSavedMovies }) {
-  const [searchText, setSearchText] = useState("");
+  const location = useLocation();
+
+  const searchTextInitialValue = () => {
+    if (location.pathname === "/movies") {
+      return localStorage.getItem("searchText") || ""
+    } else if (location.pathname === "/saved-movies") {
+      return ""
+    }
+  }
+
+  const [searchText, setSearchText] = useState(searchTextInitialValue);
   const [error, setError] = useState("");
   const [movies, setMovies] = useState();
   const [isError, setIsError] = useState(false);
 
   const [checked, setChecked] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     getMovieList()
@@ -39,6 +48,8 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
       setIsError(true);
     } else {
       if (location.pathname === "/movies") {
+        localStorage.setItem("searchText", searchText);
+
         const filteredMovies = movies.filter(
           (movie) =>
             movie.nameRU.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -65,6 +76,7 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
         setHandleAddMovies(arrayUniqueByKey);
       }
       if (location.pathname === "/saved-movies") {
+        //setSearchText(searchText === '')
         const filteredSaveMovies = JSON.parse(
           localStorage.getItem("savedMovies")
         ).filter(
@@ -72,7 +84,9 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
             movie.nameRU.toLowerCase().includes(searchText.toLowerCase()) ||
             movie.nameEN.toLowerCase().includes(searchText.toLowerCase())
         );
-
+        if (filteredSaveMovies.length === 0) {
+          setError('Ничего не найдено')
+        }
         setSavedMovies(filteredSaveMovies);
       }
     }
@@ -117,7 +131,7 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
           type="search"
           className="search__input"
           placeholder="Фильм"
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={(e) => setSearchText(e.target.value.toString())}
           value={searchText}
           required
         />

@@ -30,6 +30,7 @@ function App() {
   const [id, setId] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
     loggedIn &&
@@ -91,6 +92,7 @@ function App() {
       .register(name, email, password)
       .then(() => {
         handleLogin(email, password);
+        setBtnDisabled(true);
       })
       .catch((err) => {
         setStatus(false);
@@ -106,6 +108,7 @@ function App() {
         if (data) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
+          setBtnDisabled(true);
           navigate("/movies");
         }
       })
@@ -138,13 +141,13 @@ function App() {
             <Route
               exact
               path="/signin"
-              element={<Login handleLogin={handleLogin} />}
+              element={<Login handleLogin={handleLogin} setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} />}
             />
 
             <Route
               exact
               path="/signup"
-              element={<Register handleRegistration={handleRegistration} />}
+              element={<Register handleRegistration={handleRegistration} setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} />}
             />
 
             <Route

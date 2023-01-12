@@ -52,6 +52,7 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    props.setBtnDisabled(false);
     props.handleLogin(email, password);
   }
 
@@ -109,7 +110,7 @@ function Login(props) {
               : "login__button login__button_unactive"
           }
           type="submit"
-          disabled={!emailError && !passwordError ? false : true}
+          disabled={!emailError && !passwordError && props.setBtnDisabled ? false : true}
         >
           Войти
         </button>
@@ -128,5 +129,3 @@ function Login(props) {
 }
 
 export default Login;
-
-//https://habr.com/ru/company/yandex/blog/348240/
