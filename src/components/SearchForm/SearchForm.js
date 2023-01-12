@@ -9,11 +9,11 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
 
   const searchTextInitialValue = () => {
     if (location.pathname === "/movies") {
-      return localStorage.getItem("searchText") || ""
+      return localStorage.getItem("searchText") || "";
     } else if (location.pathname === "/saved-movies") {
-      return ""
+      return "";
     }
-  }
+  };
 
   const [searchText, setSearchText] = useState(searchTextInitialValue);
   const [error, setError] = useState("");
@@ -85,7 +85,7 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
             movie.nameEN.toLowerCase().includes(searchText.toLowerCase())
         );
         if (filteredSaveMovies.length === 0) {
-          setError('Ничего не найдено')
+          setError("Ничего не найдено");
         }
         setSavedMovies(filteredSaveMovies);
       }

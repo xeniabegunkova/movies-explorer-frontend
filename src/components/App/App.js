@@ -141,13 +141,25 @@ function App() {
             <Route
               exact
               path="/signin"
-              element={<Login handleLogin={handleLogin} setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} />}
+              element={
+                <Login
+                  handleLogin={handleLogin}
+                  setBtnDisabled={setBtnDisabled}
+                  btnDisabled={btnDisabled}
+                />
+              }
             />
 
             <Route
               exact
               path="/signup"
-              element={<Register handleRegistration={handleRegistration} setBtnDisabled={setBtnDisabled} btnDisabled={btnDisabled} />}
+              element={
+                <Register
+                  handleRegistration={handleRegistration}
+                  setBtnDisabled={setBtnDisabled}
+                  btnDisabled={btnDisabled}
+                />
+              }
             />
 
             <Route

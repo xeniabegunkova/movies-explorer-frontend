@@ -110,7 +110,9 @@ function Login(props) {
               : "login__button login__button_unactive"
           }
           type="submit"
-          disabled={!emailError && !passwordError && props.setBtnDisabled ? false : true}
+          disabled={
+            !emailError && !passwordError && props.setBtnDisabled ? false : true
+          }
         >
           Войти
         </button>

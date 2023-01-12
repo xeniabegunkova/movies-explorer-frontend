@@ -38,6 +38,7 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
   };
 
   const handleDeleteMovie = () => {
+    handleDelete(movie);
     checkArray(movie);
   };
 

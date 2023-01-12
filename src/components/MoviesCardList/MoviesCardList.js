@@ -26,10 +26,11 @@ function MoviesCardList({
 
   function checkSaveMovie() {
     let array = [];
-    MainApi.getSavedMovies().then((data) => {
-      array = data.data;
-      localStorage.setItem("savedMovies", JSON.stringify(array));
-    })
+    MainApi.getSavedMovies()
+      .then((data) => {
+        array = data.data;
+        localStorage.setItem("savedMovies", JSON.stringify(array));
+      })
       .catch((err) => {
         console.log(err);
       });
