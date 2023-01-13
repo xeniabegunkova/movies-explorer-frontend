@@ -108,7 +108,7 @@ function App() {
         if (data) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
-          setBtnDisabled(true);
+          setBtnDisabled(false);
           navigate("/movies");
         }
       })
