@@ -10,7 +10,6 @@ function SavedMovies({ handleDelete }) {
     JSON.parse(localStorage.getItem("savedMovies")) || [];
 
   const [savedMovies, setSavedMovies] = useState(alreadySavedMovies);
-  //console.log(alreadySavedMovies)
   return (
     <>
       <Header />

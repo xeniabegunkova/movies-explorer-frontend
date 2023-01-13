@@ -111,7 +111,7 @@ function Login(props) {
           }
           type="submit"
           disabled={
-            !emailError && !passwordError && !props.btnDisabled ? false : true
+            !emailError && !passwordError && props.btnDisabled ? false : true
           }
         >
           Войти
