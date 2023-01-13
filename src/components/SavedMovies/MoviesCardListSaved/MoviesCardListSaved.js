@@ -17,7 +17,7 @@ function MoviesCardListSaved({ savedMovies = [], setHandleAddMovies }) {
           console.log(savedMoviesArray);
           localStorage.setItem("savedMovies", JSON.stringify(savedMoviesArray));
           setHandleAddMovies(JSON.parse(localStorage.getItem("savedMovies")));
-          savedMoviesArray.length === 0 && setError("Ничего не найдено");
+          //savedMoviesArray.length === 0 && setError("Ничего не найдено");
           setLoad(true);
         })
         .catch((err) => {
@@ -32,9 +32,10 @@ function MoviesCardListSaved({ savedMovies = [], setHandleAddMovies }) {
   }, [location.pathname]);
 
   const handleDelete = (movie) => {
-    MainApi.deleteMovie(movie._id)
+    MainApi.deleteMovie(movie._id, localStorage.getItem('jwt'))
       .then((data) => {
         const newArray = savedMovies.filter((e) => e._id !== data._id);
+        console.log(newArray)
         localStorage.setItem("savedMovies", JSON.stringify(newArray));
         setHandleAddMovies(newArray);
       })

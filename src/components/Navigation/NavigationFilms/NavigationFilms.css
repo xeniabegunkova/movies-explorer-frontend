@@ -27,8 +27,7 @@
   font-weight: 550;
 }
 
-.navigation__films-name:focus,
-:active {
+.navigation__films-name:focus {
   outline: none;
   border: none;
 }
@@ -39,6 +38,14 @@
   font-weight: 550;
   font-size: 13px;
   line-height: 18px;
+}
+
+.navigation__films-name :hover {
+  border-bottom: 3px solid red;
+}
+
+.navigation__films-name :active {
+  border-bottom: 3px solid red;
 }
 
 .navigation__films-name:nth-child(2n + 1) {
