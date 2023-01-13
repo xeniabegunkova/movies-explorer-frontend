@@ -70,7 +70,6 @@ function Register(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.setBtnDisabled(false);
     props.handleRegistration(name, email, password);
   }
 
@@ -155,7 +154,7 @@ function Register(props) {
           }
           type="submit"
           disabled={
-            !nameError && !emailError && !passwordError && props.btnDisabled
+            !nameError && !emailError && !passwordError
               ? false
               : true
           }

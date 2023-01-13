@@ -30,7 +30,7 @@ function App() {
   const [id, setId] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [btnDisabled, setBtnDisabled] = useState(false);
 
   useEffect(() => {
     loggedIn &&
@@ -92,11 +92,11 @@ function App() {
       .register(name, email, password)
       .then(() => {
         handleLogin(email, password);
-        setBtnDisabled(true);
+        //setBtnDisabled(false);
       })
       .catch((err) => {
         setStatus(false);
-        setInfoTooltipOpen(true);
+        setInfoTooltipOpen(false);
         console.log(err);
       });
   }
@@ -108,7 +108,7 @@ function App() {
         if (data) {
           localStorage.setItem("jwt", data.token);
           setLoggedIn(true);
-          setBtnDisabled(false);
+          setBtnDisabled(true);
           navigate("/movies");
         }
       })
