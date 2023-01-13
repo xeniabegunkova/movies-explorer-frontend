@@ -155,7 +155,7 @@ function Register(props) {
           }
           type="submit"
           disabled={
-            !nameError && !emailError && !passwordError && props.setBtnDisabled
+            !nameError && !emailError && !passwordError && props.btnDisabled
               ? false
               : true
           }

@@ -7,6 +7,7 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
   const { nameRU, image, duration, trailerLink } = movie;
 
   const [isSave, setIsSave] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const location = useLocation();
 
@@ -23,14 +24,13 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
   };
 
   const handleSave = () => {
+    let newMass = JSON.parse(localStorage.getItem("savedMovies"))
     MainApi.addMoviesToSave(movie)
       .then((data) => {
-        searchMovies.forEach((item) => {
-          if (data.id === item.id) {
-            console.log(movie);
-          }
-        });
+        newMass.push(data.data)
+        localStorage.setItem("savedMovies", JSON.stringify(newMass))
         setIsSave(!isSave);
+        setBtnDisabled(true);
       })
       .catch((err) => {
         console.log(err);
@@ -38,14 +38,15 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
   };
 
   const handleDeleteMovie = () => {
+    console.log('del')
     checkArray(movie);
-    handleDelete(movie);
   };
 
   const checkArray = () => {
+
     JSON.parse(localStorage.getItem("savedMovies")).forEach((item) => {
       if (movie.nameRU === item.nameRU) {
-        //handleDeleteMovie();
+        handleDelete(item);
         setIsSave(!isSave);
       }
     });
@@ -82,11 +83,14 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
           <h2 className="movie-card__title">{nameRU}</h2>
           {location.pathname === "/movies" ? (
             <button
-              className={`movie-card__save ${
-                isSave ? "movie-card__save-active" : ""
-              }`}
+              className={`movie-card__save ${isSave ? "movie-card__save-active" : ""
+                }`}
               type="button"
               onClick={isSave ? handleDeleteMovie : handleSave}
+              disabled={
+                btnDisabled
+                  ? false
+                  : true }
             />
           ) : (
             <button

@@ -62,7 +62,7 @@ function MoviesCardList({
 
   const handleDelete = (movie) => {
     console.log(movie._id)
-    MainApi.deleteMovie(movie.movieId || movie._id)
+    MainApi.deleteMovie(movie._id || movie.movieId )
       .then((data) => {
         console.log(data)
         const newArray = savedMovies.filter((e) => e._id !== data._id);
@@ -109,8 +109,3 @@ function MoviesCardList({
 }
 
 export default MoviesCardList;
-
-//https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth
-//https://stackoverflow.com/questions/62846043/react-js-useeffect-with-window-resize-event-listener-not-working
-//https://stackoverflow.com/questions/641857/javascript-window-resize-event
-//https://developer.mozilla.org/ru/docs/Web/API/Window/resize_event
