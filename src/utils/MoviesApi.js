@@ -12,7 +12,7 @@ export async function getMovieList() {
       },
     });
     const response = await res.json();
-    return response;
+    return res.ok ? response : Promise.reject(response.message);
   } catch (error) {
     console.log(error);
   }
