@@ -33,7 +33,7 @@ function SearchForm({ setHandleAddMovies, setSavedMovies }) {
         console.log(err);
       });
     if (JSON.parse(localStorage.getItem("shortMovies"))) {
-      const searchFilms = JSON.parse(localStorage.getItem("searchedMovies"));
+      const searchFilms = JSON.parse(localStorage.getItem("searchedMovies")) || [];
       console.log(searchFilms)
       const filteredMovies = searchFilms.filter((movie) => {
         console.log(searchFilms)
