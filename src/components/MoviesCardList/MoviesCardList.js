@@ -65,7 +65,9 @@ function MoviesCardList({
     MainApi.deleteMovie(movie._id || movie.movieId)
       .then((data) => {
         console.log(data);
-        const newArray = JSON.parse(localStorage.getItem("savedMovies")).filter((e) => e._id !== data._id);
+        const newArray = JSON.parse(localStorage.getItem("savedMovies")).filter(
+          (e) => e._id !== data._id
+        );
         localStorage.setItem("savedMovies", JSON.stringify(newArray));
         setHandleAddMovies(newArray);
         setHandleAddMovies(JSON.parse(localStorage.getItem("searchedMovies")));
