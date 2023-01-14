@@ -52,7 +52,7 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.setBtnDisabled(true);
+    props.setBtnDisabled(false);
     props.handleLogin(email, password);
   }
 
@@ -111,7 +111,7 @@ function Login(props) {
           }
           type="submit"
           disabled={
-            !emailError && !passwordError && props.btnDisabled ? false : true
+            !emailError && !passwordError && !props.btnDisabled ? false : true
           }
         >
           Войти
