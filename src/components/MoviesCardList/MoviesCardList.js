@@ -17,7 +17,7 @@ import Preloader from "../Preloader/Preloader";
 function MoviesCardList({
   searchMovies = [],
   savedMovies = [],
-  setHandleAddMovies
+  setHandleAddMovies,
 }) {
   const [size, setSize] = useState(window.innerWidth);
   const [moviesCounter, setMoviesCounter] = useState();
@@ -61,15 +61,15 @@ function MoviesCardList({
   }, [size]);
 
   const handleDelete = (movie) => {
-    console.log(movie._id)
-    MainApi.deleteMovie(movie._id || movie.movieId )
+    console.log(movie._id);
+    MainApi.deleteMovie(movie._id || movie.movieId)
       .then((data) => {
-        console.log(data)
+        console.log(data);
         const newArray = savedMovies.filter((e) => e._id !== data._id);
         localStorage.setItem("savedMovies", JSON.stringify(newArray));
         setHandleAddMovies(newArray);
         setHandleAddMovies(JSON.parse(localStorage.getItem("searchedMovies")));
-        console.log(setHandleAddMovies)
+        console.log(setHandleAddMovies);
       })
       .catch((err) => {
         console.log(err);

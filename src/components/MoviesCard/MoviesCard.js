@@ -24,11 +24,11 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
   };
 
   const handleSave = () => {
-    let newMass = JSON.parse(localStorage.getItem("savedMovies"))
+    let newMass = JSON.parse(localStorage.getItem("savedMovies"));
     MainApi.addMoviesToSave(movie)
       .then((data) => {
-        newMass.push(data.data)
-        localStorage.setItem("savedMovies", JSON.stringify(newMass))
+        newMass.push(data.data);
+        localStorage.setItem("savedMovies", JSON.stringify(newMass));
         setIsSave(!isSave);
         setBtnDisabled(true);
       })
@@ -38,12 +38,11 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
   };
 
   const handleDeleteMovie = () => {
-    console.log('del')
+    console.log("del");
     checkArray(movie);
   };
 
   const checkArray = () => {
-
     JSON.parse(localStorage.getItem("savedMovies")).forEach((item) => {
       if (movie.nameRU === item.nameRU) {
         handleDelete(item);
@@ -83,14 +82,12 @@ function MoviesCard({ movie, handleDelete, searchMovies = [] }) {
           <h2 className="movie-card__title">{nameRU}</h2>
           {location.pathname === "/movies" ? (
             <button
-              className={`movie-card__save ${isSave ? "movie-card__save-active" : ""
-                }`}
+              className={`movie-card__save ${
+                isSave ? "movie-card__save-active" : ""
+              }`}
               type="button"
               onClick={isSave ? handleDeleteMovie : handleSave}
-              disabled={
-                btnDisabled
-                  ? false
-                  : true }
+              disabled={btnDisabled ? false : true}
             />
           ) : (
             <button

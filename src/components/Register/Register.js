@@ -153,11 +153,7 @@ function Register(props) {
               : "auth__button auth__button_unactive"
           }
           type="submit"
-          disabled={
-            !nameError && !emailError && !passwordError
-              ? false
-              : true
-          }
+          disabled={!nameError && !emailError && !passwordError ? false : true}
         >
           Зарегистрироваться
         </button>

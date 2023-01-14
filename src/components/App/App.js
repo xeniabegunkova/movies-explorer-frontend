@@ -126,7 +126,7 @@ function App() {
   function handleLogOut() {
     localStorage.removeItem("jwt");
     localStorage.removeItem("searchedMovies");
-    localStorage.removeItem('searchText');
+    localStorage.removeItem("searchText");
     setLoggedIn(false);
     setCurrentUser({});
     setMovies([]);
