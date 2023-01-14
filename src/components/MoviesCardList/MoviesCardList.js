@@ -34,7 +34,7 @@ function MoviesCardList({
       .catch((err) => {
         console.log(err);
       });
-  } // проверяет на сохранение
+  } 
 
   useEffect(() => {
     checkSaveMovie();
@@ -58,7 +58,7 @@ function MoviesCardList({
       setMore(NUMBEROFCELLSINAROW_768);
     }
     return () => window.removeEventListener("resize", handleChangeWidth);
-  }, [size]); //устанавливает кол-во карточек на экране
+  }, [size]); 
 
   const handleDelete = (movie) => {
     console.log(movie._id);
@@ -74,7 +74,7 @@ function MoviesCardList({
       .catch((err) => {
         console.log(err);
       });
-  }; // отвечает за удаление
+  };
 
   return (
     <>
