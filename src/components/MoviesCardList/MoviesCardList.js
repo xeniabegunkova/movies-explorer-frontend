@@ -34,7 +34,7 @@ function MoviesCardList({
       .catch((err) => {
         console.log(err);
       });
-  } 
+  }
 
   useEffect(() => {
     checkSaveMovie();
@@ -58,18 +58,17 @@ function MoviesCardList({
       setMore(NUMBEROFCELLSINAROW_768);
     }
     return () => window.removeEventListener("resize", handleChangeWidth);
-  }, [size]); 
+  }, [size]);
 
   const handleDelete = (movie) => {
     console.log(movie._id);
     MainApi.deleteMovie(movie._id || movie.movieId)
       .then((data) => {
         console.log(data);
-        const newArray = savedMovies.filter((e) => e._id !== data._id);
+        const newArray = JSON.parse(localStorage.getItem("savedMovies")).filter((e) => e._id !== data._id);
         localStorage.setItem("savedMovies", JSON.stringify(newArray));
         setHandleAddMovies(newArray);
         setHandleAddMovies(JSON.parse(localStorage.getItem("searchedMovies")));
-        console.log(setHandleAddMovies);
       })
       .catch((err) => {
         console.log(err);
